@@ -15947,6 +15947,224 @@ const database = {
         { "p1": "I'm Batman", "p2": "siwkerss", "pts1": 20, "pts2": 0, "resultType": "walkover" },
         { "p1": "troyak", "p2": "siwkerss", "pts1": 20, "pts2": 0, "resultType": "walkover" }
       ]
+    },
+    {
+      "id": 32,
+      "title": "Turniejowa Edycja",
+      "startDate": "",
+      "endDate": "",
+      "status": "active",
+      "draftConfigV2": {
+        "schema": "msp-snapdraft/settings-v2",
+        "version": "2.8.0-tournament-v1-patch2",
+        "draftMode": {
+          "id": "classic",
+          "name": "Classic"
+        },
+        "competitionFormat": {
+          "id": "round_robin",
+          "name": "Każdy z każdym",
+          "version": 1
+        },
+        "extensions": {
+          "superpowers": {
+            "enabled": true,
+            "name": "Supermoce"
+          },
+          "jokers": {
+            "enabled": true,
+            "name": "Jokery"
+          },
+          "economy": {
+            "enabled": true,
+            "name": "Ekonomia Draftu"
+          },
+          "bounties": {
+            "enabled": true,
+            "name": "Łowcy Nagród",
+            "rewardProfile": "standard",
+            "rewardProfileName": "Standardowe Łowy"
+          }
+        },
+        "specialSettings": {
+          "draftFlow": {
+            "cerebroAutopilot": {
+              "enabled": true
+            }
+          },
+          "poolRules": {
+            "bans": {
+              "enabled": true,
+              "cards": [
+                "Arishem",
+                "Loki",
+                "Thanos Fractured Frontier",
+                "Anti-Polar Magneto",
+                "Shadow King",
+                "Vampire Killmonger",
+                "Cosmo",
+                "Venus",
+                "Gambit",
+                "Scorpion Brand New Day"
+              ]
+            },
+            "luckyCards": {
+              "enabled": true,
+              "cards": [
+                "Arthur Pendragon",
+                "Merlin of Avalon",
+                "Captain Britain"
+              ]
+            }
+          }
+        }
+      },
+      "playersCount": 8,
+      "winner": null,
+      "scoring": {
+        "system": "standard25",
+        "singleWalkover": "20:0",
+        "doubleWalkover": "0:0"
+      },
+      "players": [
+        {
+          "name": "troyak",
+          "deck": [
+            "Ant-Man",
+            "Zabu",
+            "Elektra",
+            "Captain Britain",
+            "Pixie",
+            "Astral Projection",
+            "Spider-Punk",
+            "Arthur Pendragon",
+            "Galacta",
+            "Anti-Polar Magneto",
+            "Emperor Hulkling",
+            "Lancelot"
+          ]
+        },
+        {
+          "name": "Budiso",
+          "deck": [
+            "Cable",
+            "Marvel Boy",
+            "Iron Patriot",
+            "Deafening Chord",
+            "Hobgoblin",
+            "Elektra",
+            "Stryfe",
+            "Spider-Woman",
+            "Captain Marvel",
+            "Thanos",
+            "Maximus",
+            "Terrax the Tamer"
+          ]
+        },
+        {
+          "name": "MrMateoS",
+          "deck": [
+            "Agamotto",
+            "Blade",
+            "Colonel America",
+            "Wolverine",
+            "Shang-Chi",
+            "Sword Master",
+            "Swarm",
+            "Firelord",
+            "Moon Knight",
+            "The First Ghost Rider",
+            "Daken",
+            "Bullseye"
+          ]
+        },
+        {
+          "name": "Maniek",
+          "deck": [
+            "Arthur Pendragon",
+            "Vampire America Chavez",
+            "Triton",
+            "Martyr",
+            "Psylocke Fractured Frontier",
+            "Negasonic Teenage Warhead",
+            "Iron Lad",
+            "Luke Cage",
+            "Merlin of Avalon",
+            "Stick",
+            "Groot",
+            "Jennifer Kale"
+          ]
+        },
+        {
+          "name": "FizjoRadek",
+          "deck": [
+            "Doctor Doom 2099",
+            "Web Sling",
+            "Red Hulk Fractured Frontier",
+            "Abomination",
+            "Surge",
+            "Araña",
+            "Gorr the God Butcher",
+            "Luna Snow",
+            "Shadow King",
+            "Medusa",
+            "Captain Britain",
+            "Mister Fantastic"
+          ]
+        },
+        {
+          "name": "Benio",
+          "deck": [
+            "Phastos",
+            "High Evolutionary",
+            "Hulk",
+            "Mister Fantastic",
+            "H.E.R.B.I.E.",
+            "Psylocke",
+            "Luke Cage",
+            "Armor",
+            "Green Goblin",
+            "Hazmat",
+            "Valkyrie",
+            "Deadpool"
+          ]
+        },
+        {
+          "name": "Dejwidgakure",
+          "deck": [
+            "Araña",
+            "Merlin of Avalon",
+            "Agent 13",
+            "Madame Web",
+            "Sam Wilson Captain America",
+            "Okoye",
+            "Cloak",
+            "Multiple Man",
+            "Human Torch",
+            "Mary Jane",
+            "Friendly Neighborhood Carnage",
+            "Stardust"
+          ]
+        },
+        {
+          "name": "I'm Batman",
+          "deck": [
+            "Kitty Pryde",
+            "America Chavez",
+            "Nebula",
+            "Silver Sable",
+            "Tarantula",
+            "Fan Fei",
+            "Makkari",
+            "Legion",
+            "Agent Coulson",
+            "Marvel Boy",
+            "Sersi",
+            "Jocasta"
+          ]
+        }
+      ],
+      "matches": []
     }
   ]
 };

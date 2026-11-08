@@ -1,0 +1,211 @@
+/* ===============================================================
+   MSP SNAPDRAFT · Galaktyczna Baza Wojowników · final stickers V1
+   Wyłącznie pozycjonowanie i typografia; bez zmiany siatki/danych/JS.
+   Zachowuje dokładnie istniejący odstęp między sekcjami.
+   =============================================================== */
+
+/* Wszystkie Jeffy: na wierzchu, bez białego obrysu i bez kliknięć. */
+.profile-sections > :is(.section-anatomy,.section-records,.section-royal-ranks,.section-achievements){
+  position:relative!important;
+  overflow:visible!important;
+  isolation:isolate;
+  z-index:25!important;
+}
+.profile-sections > .section-anatomy{z-index:27!important}
+.profile-sections > .section-achievements{z-index:35!important}
+.profile-sections > .profile-section > :is(.msp-jeff-profile-sticker--centrum,.msp-jeff-profile-sticker--records,.msp-jeff-profile-sticker--ranks,.msp-jeff-profile-sticker--timeline){
+  position:absolute!important;
+  display:block!important;
+  left:auto!important;
+  right:var(--final-jeff-right,0)!important;
+  top:var(--final-jeff-top,-45px)!important;
+  bottom:auto!important;
+  width:var(--final-jeff-width,220px)!important;
+  max-width:none!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:999!important;
+  object-fit:contain;
+  overflow:visible!important;
+  pointer-events:none!important;
+  user-select:none!important;
+  filter:drop-shadow(0 8px 14px rgba(4,7,27,.30)) drop-shadow(0 0 10px rgba(62,217,255,.18));
+  animation:mspFinalJeffLevitate 5.8s ease-in-out infinite alternate;
+}
+@keyframes mspFinalJeffLevitate{from{translate:0 3px}to{translate:0 -5px}}
+
+/* Pomiędzy Centrum Dowodzenia a Anatomią: naklejka ma własną warstwę,
+   ale sekcje nadal dzieli dokładnie oryginalny odstęp 24 px. */
+.profile-sections > .section-anatomy{
+  --final-jeff-right:10px;
+  --final-jeff-top:-112px;
+  --final-jeff-width:clamp(185px,18vw,248px);
+}
+
+/* Medalowy Jeff — Rekordy Wojownika, prawy górny róg. */
+.profile-sections > .section-records{
+  --final-jeff-right:8px;
+  --final-jeff-top:-58px;
+  --final-jeff-width:clamp(195px,18.5vw,246px);
+}
+
+/* Galaktyczny ranking — osobny Jeff, bez zmian zwycięzców w JS. */
+.profile-sections > .section-royal-ranks{
+  --final-jeff-right:6px;
+  --final-jeff-top:-67px;
+  --final-jeff-width:clamp(185px,17vw,235px);
+}
+
+/* Ciągła oś czasu na STYKU historii i osiągnięć: górna część wychodzi
+   ponad sekcję osiągnięć i zachodzi na dolną krawędź historii. */
+.profile-sections > .section-achievements{
+  --final-jeff-right:auto;
+  --final-jeff-top:-158px;
+  --final-jeff-width:clamp(215px,21vw,270px);
+}
+.profile-sections > .section-achievements > .msp-jeff-profile-sticker--timeline{
+  left:5px!important;
+  right:auto!important;
+}
+
+/* Zachowujemy ten sam charakter nagłówków, wzmacniamy tylko drobne opisy.
+   Zdania są CYJANOWE z łagodnym glow — czytelnie na ciemnym tle. */
+.profile-sections > .profile-section .profile-section-head > p,
+.profile-sections > .profile-section .msp-trajectory-utility-description{
+  color:#90ebf7!important;
+  text-shadow:0 0 8px rgba(45,215,244,.31),0 0 17px rgba(50,178,235,.16)!important;
+  line-height:1.44!important;
+  font-weight:650!important;
+  overflow-wrap:break-word;
+  text-wrap:pretty;
+}
+
+/* Tam, gdzie w prawym górnym rogu jest naklejka, szczegółowe opisy
+   kończą się PRZED nią, bez dodawania pustych wierszy/odstępów. */
+.profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head{
+  display:block!important;
+}
+.profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > div:first-child{
+  max-width:calc(100% - 255px)!important;
+}
+.profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > p{
+  max-width:calc(100% - 285px)!important;
+  margin:9px 0 0!important;
+  text-align:left!important;
+}
+/* Zwłaszcza: „Statystyczna dwunastka...” nie może wejść pod Jeffa. */
+.profile-sections > .section-signature-deck .profile-section-head > p{
+  max-width:calc(100% - 310px)!important;
+}
+.profile-sections > .section-career .profile-section-head > p{
+  max-width:min(560px,53%)!important;
+}
+.profile-sections > .section-anatomy .profile-section-head{display:block!important}
+.profile-sections > .section-anatomy .profile-section-head > p{
+  max-width:calc(100% - 275px)!important;
+  margin:9px 0 0!important;
+  text-align:left!important;
+}
+
+/* Historia zachowuje opis po prawej (pozioma kronika pod spodem). */
+.profile-sections > .section-history .profile-section-head > p{
+  max-width:440px!important;
+  text-align:right!important;
+}
+/* Przy osi czasu p. odznaczeń oraz nagłówek siedzą obok Jeffa,
+   nie pod nim. */
+.profile-sections > .section-achievements .profile-section-head{
+  display:block!important;
+}
+.profile-sections > .section-achievements .profile-section-head > div:first-child{
+  margin-left:clamp(205px,20vw,260px)!important;
+  max-width:calc(100% - clamp(205px,20vw,260px))!important;
+}
+.profile-sections > .section-achievements .profile-section-head > p{
+  margin:9px 0 0 clamp(205px,20vw,260px)!important;
+  max-width:calc(100% - clamp(205px,20vw,260px))!important;
+  text-align:left!important;
+}
+
+/* Istniejący Jeff w H2H: 85% poprzedniej skali, ustawienia pozostałe. */
+.profile-sections > .section-rivalries{--jeff-w:246px}
+/* Nagłówki nie stykają się z pomniejszoną naklejką. */
+.profile-sections > .section-rivalries .profile-section-head > p{
+  max-width:calc(100% - 255px)!important;
+}
+
+/* DNA — większy Jeff bez zwiększania szerokości kolumny ani odstępów. */
+#warriorDnaSection .warrior-dna-jeff{
+  scale:1.23;
+  transform-origin:81% 47%;
+}
+
+/* Dekoracyjne pytajniki PO PRAWEJ od dużego tytułu Ciekawostek.
+   Nie są zawartością i nie mogą zakryć interaktywnego znaku pomocy. */
+.section-fortress-lore .fortress-lore-heading{position:relative!important}
+.section-fortress-lore .fortress-lore-heading::after{
+  content:'?  ?  ?';
+  position:absolute;
+  left:calc(100% + 8px);
+  top:-15px;
+  z-index:0;
+  pointer-events:none;
+  white-space:nowrap;
+  color:rgba(124,210,255,.53);
+  font:900 22px/1 Orbitron,sans-serif;
+  letter-spacing:9px;
+  text-shadow:0 0 9px rgba(87,222,255,.52),0 0 21px rgba(160,99,255,.3);
+  rotate:-8deg;
+}
+
+/* Zapisujemy ustalone odstępy; naklejki nie są dodatkowym wierszem. */
+.profile-sections{gap:24px!important}
+
+@media(max-width:1000px){
+  .profile-sections > .section-anatomy{--final-jeff-width:205px;--final-jeff-top:-89px;--final-jeff-right:-4px}
+  .profile-sections > .section-records{--final-jeff-width:194px;--final-jeff-top:-44px;--final-jeff-right:0px}
+  .profile-sections > .section-royal-ranks{--final-jeff-width:185px;--final-jeff-top:-49px;--final-jeff-right:0px}
+  .profile-sections > .section-achievements{--final-jeff-width:218px;--final-jeff-top:-126px}
+  .profile-sections > .section-rivalries{--jeff-w:194px}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > div:first-child{max-width:calc(100% - 198px)!important}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > p{max-width:calc(100% - 218px)!important}
+  .profile-sections > .section-achievements .profile-section-head > div:first-child{margin-left:195px!important;max-width:calc(100% - 195px)!important}
+  .profile-sections > .section-achievements .profile-section-head > p{margin-left:195px!important;max-width:calc(100% - 195px)!important}
+}
+@media(max-width:720px){
+  .profile-sections > .section-anatomy{--final-jeff-width:151px;--final-jeff-top:-83px;--final-jeff-right:-5px}
+  .profile-sections > .section-records{--final-jeff-width:144px;--final-jeff-top:-37px;--final-jeff-right:-7px}
+  .profile-sections > .section-royal-ranks{--final-jeff-width:144px;--final-jeff-top:-42px;--final-jeff-right:-5px}
+  .profile-sections > .section-achievements{--final-jeff-width:160px;--final-jeff-top:-92px}
+  .profile-sections > .section-achievements > .msp-jeff-profile-sticker--timeline{left:-13px!important}
+  .profile-sections > .section-rivalries{--jeff-w:140px}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > div:first-child{max-width:calc(100% - 133px)!important}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > p{max-width:calc(100% - 146px)!important;margin-top:7px!important}
+  .profile-sections > .section-signature-deck .profile-section-head > p{max-width:calc(100% - 160px)!important}
+  .profile-sections > .section-anatomy .profile-section-head > p{max-width:calc(100% - 146px)!important}
+  .profile-sections > .section-history .profile-section-head > p{max-width:100%!important;text-align:left!important}
+  .profile-sections > .section-achievements .profile-section-head > div:first-child{margin-left:139px!important;max-width:calc(100% - 139px)!important}
+  .profile-sections > .section-achievements .profile-section-head > p{margin-left:139px!important;max-width:calc(100% - 139px)!important}
+  #warriorDnaSection .warrior-dna-jeff{scale:1.16;transform-origin:right center}
+  .section-fortress-lore .fortress-lore-heading::after{font-size:17px;letter-spacing:5px;left:calc(100% + 3px)}
+}
+@media(max-width:440px){
+  .profile-sections > .section-anatomy{--final-jeff-width:125px;--final-jeff-top:-72px;--final-jeff-right:-11px}
+  .profile-sections > .section-records{--final-jeff-width:121px;--final-jeff-top:-31px;--final-jeff-right:-12px}
+  .profile-sections > .section-royal-ranks{--final-jeff-width:119px;--final-jeff-top:-35px;--final-jeff-right:-10px}
+  .profile-sections > .section-achievements{--final-jeff-width:139px;--final-jeff-top:-57px}
+  .profile-sections > .section-rivalries{--jeff-w:114px}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > div:first-child{max-width:calc(100% - 115px)!important}
+  .profile-sections > :is(.section-records,.section-royal-ranks,.section-rivalries,.section-signature-deck) .profile-section-head > p{max-width:calc(100% - 115px)!important}
+  .profile-sections > .section-signature-deck .profile-section-head > p{max-width:100%!important}
+  .profile-sections > .section-anatomy .profile-section-head > p{max-width:calc(100% - 119px)!important}
+  .profile-sections > .section-achievements .profile-section-head > div:first-child{margin-left:110px!important;max-width:calc(100% - 110px)!important}
+  .profile-sections > .section-achievements .profile-section-head > p{margin-left:110px!important;max-width:calc(100% - 110px)!important}
+  #warriorDnaSection .warrior-dna-jeff{scale:1.10}
+  .section-fortress-lore .fortress-lore-heading::after{opacity:.5;left:calc(100% - 10px);top:-19px;font-size:12px;letter-spacing:3px}
+}
+@media(prefers-reduced-motion:reduce){
+  .profile-sections > .profile-section > :is(.msp-jeff-profile-sticker--centrum,.msp-jeff-profile-sticker--records,.msp-jeff-profile-sticker--ranks,.msp-jeff-profile-sticker--timeline){animation:none!important}
+}

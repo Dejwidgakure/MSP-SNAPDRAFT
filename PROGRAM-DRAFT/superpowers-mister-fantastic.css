@@ -1,0 +1,124 @@
+/* Mister Fantastic V2 — tylko wybrany deck, bez starej cyjanowej poświaty. */
+.deck-section.spx-fantastic-deck{
+    overflow:visible!important;
+    outline:0!important;
+    border-color:rgba(29,42,65,.94)!important;
+    box-shadow:none!important;
+    filter:none;
+}
+.deck-section.spx-fantastic-deck:hover{box-shadow:none!important}
+.deck-section.spx-fantastic-deck::after{
+    background:none!important;
+    filter:none!important;
+    box-shadow:none!important;
+    opacity:0!important;
+}
+.deck-section.spx-fantastic-deck>.spx-fantastic-arm-frame{
+    position:absolute!important;
+    z-index:8!important;
+    pointer-events:none!important;
+    user-select:none!important;
+    inset:-29px -30px -29px -30px!important;
+    width:calc(100% + 60px)!important;
+    height:calc(100% + 58px)!important;
+    max-width:none!important;
+    max-height:none!important;
+    object-fit:fill;
+    display:block!important;
+    opacity:1;
+    transform-origin:center center;
+    animation:spx-fantastic-frame-breathe 4.2s ease-in-out infinite;
+}
+@keyframes spx-fantastic-frame-breathe{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.011,1.006)}
+}
+.deck-section.spx-fantastic-deck .deckProgressLabel{color:#e7f9ff!important}
+.spx-fantastic-slot-note{
+    display:block;
+    margin:7px 0;
+    color:#b6eaff;
+    font:700 11px/1.4 'Trebuchet MS',sans-serif;
+    letter-spacing:.055em;
+}
+.spx-fantastic-elastic-title{
+    display:block;
+    width:max-content;
+    max-width:100%;
+    margin:5px auto 7px;
+    padding:3px 7px;
+    font-family:'Trebuchet MS','Arial Rounded MT Bold',system-ui,sans-serif;
+    font-size:clamp(16px,1.35vw,22px);
+    font-weight:1000;
+    line-height:1.18;
+    letter-spacing:.035em;
+    transform-origin:center bottom;
+    color:#fff3aa;
+    -webkit-text-stroke:.7px #172352;
+    text-shadow:2px 3px 0 #122453,-1px -1px 0 #248ad8,0 0 7px rgba(255,217,69,.38);
+    animation:spx-fantastic-letter-bounce 2.2s cubic-bezier(.3,.6,.2,1) infinite;
+}
+@keyframes spx-fantastic-letter-bounce{
+    0%,12%,100%{transform:scale(1,1) rotate(-2deg)}
+    22%{transform:translateY(-4px) scale(.92,1.13) rotate(2deg)}
+    31%{transform:translateY(1px) scale(1.07,.91) rotate(-1deg)}
+    40%{transform:translateY(-1px) scale(.98,1.04)}
+    48%{transform:scale(1)}
+}
+/* Blokada przypadkowych picków podczas rozciągania; inne mody pozostają nietknięte. */
+body.spx-fantastic-stretch-lock #pack{pointer-events:none}
+.spx-fantastic-activity-shield{position:fixed;inset:0;z-index:2147483400;pointer-events:auto;background:transparent;cursor:wait}
+.spx-fantastic-cast{
+    position:fixed;
+    z-index:2147483500;
+    pointer-events:none;
+    transform-origin:92% 50%;
+    animation:spx-fantastic-arm-reach 2.1s cubic-bezier(.25,.52,.17,1) both;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.60));
+}
+.spx-fantastic-cast img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+.spx-fantastic-cast-open{animation:spx-fantastic-open-frame 2.1s steps(1,end) both}
+.spx-fantastic-cast-fist{animation:spx-fantastic-fist-frame 2.1s steps(1,end) both}
+@keyframes spx-fantastic-arm-reach{
+    0%{opacity:0;transform:translateX(var(--spx-arm-enter)) scaleX(.66)}
+    8%{opacity:1}
+    32%{opacity:1;transform:translateX(0) scaleX(1)}
+    51%{opacity:1;transform:translateX(0) scaleX(1)}
+    74%{opacity:1;transform:translateX(var(--spx-arm-pull)) scaleX(1.17)}
+    90%{opacity:1;transform:translateX(var(--spx-arm-pull)) scaleX(1.15)}
+    100%{opacity:0;transform:translateX(calc(var(--spx-arm-pull) + 40px)) scaleX(1.1)}
+}
+@keyframes spx-fantastic-open-frame{0%,39%{opacity:1}40%,100%{opacity:0}}
+@keyframes spx-fantastic-fist-frame{0%,39%{opacity:0}40%,100%{opacity:1}}
+#pack.spx-fantastic-pack-stretching{transform-origin:left center;animation:spx-fantastic-pack-pull 2.1s ease-in-out both}
+@keyframes spx-fantastic-pack-pull{
+    0%,38%{transform:scaleX(1)}
+    57%{transform:scaleX(1.065)}
+    69%{transform:scaleX(.982)}
+    83%,100%{transform:scaleX(1)}
+}
+#pack .spx-fantastic-extra-card{animation:spx-fantastic-card-emerge .62s cubic-bezier(.2,1.32,.3,1) both}
+@keyframes spx-fantastic-card-emerge{
+    from{opacity:0;transform:translateX(-34px) scale(.78)}
+    to{opacity:1;transform:translateX(0) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+    .deck-section.spx-fantastic-deck>.spx-fantastic-arm-frame,
+    .spx-fantastic-elastic-title,
+    #pack .spx-fantastic-extra-card,
+    #pack.spx-fantastic-pack-stretching{animation:none!important}
+}
+
+.spx-fantastic-overlay{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(1,7,27,.92);backdrop-filter:blur(8px)}
+.spx-fantastic-shell{width:min(760px,100%);max-height:95dvh;overflow:auto;border:2px solid #68f9e8;border-radius:22px;background:linear-gradient(145deg,#09243b,#0b1233 75%);color:#eefaff;box-shadow:0 0 60px rgba(42,224,214,.24);padding:clamp(15px,3vw,26px);font:14px/1.5 system-ui,sans-serif}
+.spx-fantastic-shell h2{font-size:clamp(17px,3vw,26px);margin:4px 0 10px;line-height:1.25}.spx-fantastic-shell header span{color:#73ffe9;font-weight:800;letter-spacing:.14em;font-size:11px}.spx-fantastic-shell p{color:#b6c9e7;margin:0 0 18px}
+.spx-fantastic-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;max-height:55dvh;overflow:auto}
+.spx-fantastic-card{color:#c9ddf1;background:#0b2342;border:1px solid #426487;border-radius:12px;min-height:64px;padding:10px;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:4px;transition:border-color .15s,background .15s}
+.spx-fantastic-card strong{font-size:12px}.spx-fantastic-card small{font-size:11px;color:#95b4dc}
+.spx-fantastic-card.selected{background:#115050;border-color:#8effd9;box-shadow:inset 0 0 0 1px #80f9ce}
+.spx-fantastic-card:focus-visible,#spxFantasticConfirm:focus-visible{outline:3px solid #ffcb64;outline-offset:2px}
+.spx-fantastic-shell footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}
+#spxFantasticConfirm{padding:12px 18px;border-radius:12px;border:0;background:#68f9e8;color:#052535;font-weight:900;cursor:pointer}
+#spxFantasticConfirm:disabled{opacity:.4;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){.spx-fantastic-live .deck-section.spx-fantastic-deck{animation:none}}
+

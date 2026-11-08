@@ -1,0 +1,301 @@
+/* MSP SNAPDRAFT — Kroniki Hotfix B.1, 2026-11-03
+   Ładowany PO draft-kroniki-visual-patch-b.css; tylko prezentacja.
+   Nie zmienia ID, struktury meczów, silnika, danych ani statystyk. */
+
+/* 1. NAWIGACJA: odzyskuje położenie u góry pod navbar-em, nie pod panelem informacji.
+   Jeden rząd: [Poprzedni] [Następny]                            [Wybór] [Przejdź].
+   Etykieta jest pod samym selectem, więc NIE podwyższa wysokości wiersza. */
+.toolbar{
+  position:absolute!important;
+  inset:auto!important;
+  top:212px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(1440px,calc(100% - 28px))!important;
+  margin:0!important;
+  padding:0 clamp(8px,1vw,18px)!important;
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+  column-gap:16px!important;
+  row-gap:0!important;
+  background:transparent!important;
+  z-index:15!important;
+  pointer-events:none!important;
+}
+.toolbar-left,.toolbar-right{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:12px!important;
+  width:auto!important;
+  max-width:none!important;
+  min-width:0!important;
+  pointer-events:auto;
+}
+.toolbar-right{justify-content:flex-end!important;flex:0 1 520px}
+.toolbar-left .toolbar-btn,.toolbar-right .toolbar-btn{flex:none!important;min-height:48px}
+.quick-jump-control{
+  position:relative;
+  isolation:isolate;
+  flex:1 1 360px;
+  display:block!important;
+  width:clamp(240px,29vw,420px)!important;
+  max-width:420px!important;
+  min-width:180px!important;
+  height:48px;
+  overflow:visible;
+}
+.quick-jump-control select{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%;
+  height:48px;
+  padding-right:28px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.quick-jump-label{
+  position:absolute!important;
+  top:calc(100% + 6px)!important;
+  left:0!important;
+  right:0!important;
+  bottom:auto!important;
+  width:100%!important;
+  text-align:center!important;
+  font:800 11px/1.3 'Orbitron','Rajdhani',sans-serif!important;
+  letter-spacing:.14em!important;
+  color:#b7edff!important;
+  text-shadow:0 0 8px rgba(57,209,255,.58);
+  pointer-events:none;
+}
+
+/* Obramowanie świetlne: animacja KĄTA gradientu na nieruchomej obwódce,
+   bez transform:rotate() całego prostokąta (wcześniejszy efekt wiru). */
+@property --kroniki-edge-angle {syntax:'<angle>';initial-value:0deg;inherits:false;}
+.toolbar .toolbar-btn{position:relative;isolation:isolate;overflow:hidden}
+.toolbar .toolbar-btn::before,.toolbar .quick-jump-control::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  border:2px solid transparent;
+  border-radius:14px;
+  padding:0;
+  bottom:auto;
+  height:48px;
+  pointer-events:none;
+  --kroniki-edge-angle:0deg;
+  background:conic-gradient(from var(--kroniki-edge-angle),
+    transparent 0deg 292deg,
+    rgba(45,199,244,.17) 306deg,
+    rgba(89,225,255,.72) 324deg,
+    #d6feff 337deg,
+    rgba(66,204,255,.27) 350deg,
+    transparent 360deg) border-box;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;
+  mask-composite:exclude;
+  transform:none!important;
+  animation:kronikiEdgeCircuit 10.5s linear infinite!important;
+}
+.toolbar .toolbar-btn::before{height:100%;}
+@keyframes kronikiEdgeCircuit{to{--kroniki-edge-angle:360deg;}}
+.toolbar .toolbar-btn:hover{box-shadow:0 0 18px rgba(67,215,255,.27)!important}
+
+/* 2. DRABINKA: bezpośrednia warstwa <img> z osobnym overlayem.
+   Grafika jest widoczna przez środek i obrzeża, a podpisy pozostają czytelne. */
+.content #tournamentChroniclesSection.tournament-chronicles-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#130a32!important;
+  border-color:rgba(255,207,126,.66)!important;
+}
+.content #tournamentChroniclesSection .t-ch-scene-image{
+  display:block!important;
+  position:absolute!important;
+  inset:0;
+  width:100%!important;
+  height:100%!important;
+  z-index:0!important;
+  object-fit:cover;
+  object-position:center 56%;
+  opacity:.56;
+  filter:saturate(.95) brightness(.74);
+  pointer-events:none;
+  user-select:none;
+}
+.content #tournamentChroniclesSection.section-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1!important;
+  opacity:1!important;
+  background:linear-gradient(180deg,
+    rgba(5,7,26,.54) 0%,
+    rgba(7,6,28,.66) 24%,
+    rgba(8,6,30,.77) 58%,
+    rgba(7,5,26,.72) 100%)!important;
+  mix-blend-mode:normal!important;
+  pointer-events:none;
+}
+.content #tournamentChroniclesSection.section-card::after{z-index:1!important;opacity:.08!important}
+.content #tournamentChroniclesSection .section-inner{
+  position:relative;
+  z-index:2!important;
+}
+/* Nieprzezroczyste kafelki wyników dla kontrastu na barwnym tle. */
+#tournamentChroniclesSection .t-ch-fixture{
+  background:linear-gradient(145deg,rgba(32,14,70,.94),rgba(13,10,39,.96))!important;
+  box-shadow:0 5px 17px rgba(0,0,0,.22),0 0 15px rgba(245,171,95,.07)!important;
+}
+
+/* 3. KAFEL INFORMACJI: podpisy wciąż subtelne, ale silniejsze i czytelniejsze. */
+.meta-grid .meta-card .meta-label{
+  font:800 clamp(13px,.94vw,15px)/1.34 'Rajdhani',sans-serif!important;
+  letter-spacing:.11em!important;
+  color:#c2f3ff!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 11px rgba(93,224,255,.47)!important;
+}
+.meta-grid .meta-card.meta-winner .meta-label{color:#ffe2a0!important;text-shadow:0 0 12px rgba(255,205,100,.5)!important}
+.meta-config-label,.meta-config-detail>span{
+  font-size:clamp(12px,.88vw,14px)!important;
+  font-weight:900!important;
+  letter-spacing:.12em!important;
+  color:#ffdfac!important;
+  text-shadow:0 1px 3px rgba(0,0,0,.94),0 0 12px rgba(248,180,88,.38)!important;
+}
+
+/* 4. DECKI KRONIK: legenda wyśrodkowana, pod nią centralnie punkty/bilans.
+   Nick i przyciski powiększania pozostają na dotychczasowych pozycjach. */
+.decks-section .deck-card .deck-top{
+  display:block;
+  position:relative;
+  margin-bottom:16px;
+}
+.decks-section .deck-card .deck-player-wrap{
+  display:block;
+  width:100%;
+  min-width:0;
+}
+.decks-section .deck-card .deck-player{
+  padding-right:116px;
+}
+
+.decks-section .deck-card .deck-player small{
+  color:#8feeff!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.88),0 0 8px rgba(71,217,255,.34)!important;
+  letter-spacing:.12em!important;
+}
+.decks-section .deck-card .deck-actions{
+  position:absolute;
+  top:0;
+  right:0;
+  display:flex;
+  align-items:flex-start;
+}
+.decks-section .deck-card .deck-mini-stats{
+  display:grid!important;
+  grid-template-columns:repeat(2,max-content);
+  justify-content:center!important;
+  justify-items:center;
+  column-gap:10px;
+  row-gap:8px;
+  width:100%;
+  margin-top:14px;
+}
+.decks-section .deck-mini-stats .deck-badge.legend{
+  grid-column:1/-1;
+  justify-self:center;
+  max-width:none;
+  text-align:center;
+  white-space:nowrap;
+  font-size:13px;
+  padding:4px 14px;
+  min-height:0;
+  color:#fff1bf;
+  background:linear-gradient(180deg,rgba(111,71,14,.42),rgba(255,214,101,.16));
+  border-color:rgba(255,213,108,.48);
+  box-shadow:0 0 14px rgba(255,213,74,.16), inset 0 1px 0 rgba(255,252,220,.42), inset 0 -1px 0 rgba(125,79,12,.46);
+  text-shadow:0 1px 0 rgba(92,58,10,.95), 0 0 8px rgba(255,221,130,.34);
+}
+.decks-section .deck-mini-stats .deck-badge:nth-child(2){justify-self:end}
+.decks-section .deck-mini-stats .deck-badge:nth-child(3){justify-self:start}
+.decks-section .cards-grid .card-tile{
+  font-weight:700;
+  color:#dff8ff;
+  text-shadow:0 1px 3px rgba(0,0,0,.92),0 0 9px rgba(81,220,255,.30);
+  border-width:1px;
+  box-shadow:inset 0 0 10px rgba(61,204,255,.065),0 0 6px rgba(83,201,254,.11);
+}
+
+/* Zawijanie na mniejszych ekranach, bez ingerencji w desktopowy top. */
+@media(max-width:1050px){
+  .toolbar{
+    position:relative!important;
+    top:auto!important;
+    left:auto!important;
+    transform:none!important;
+    margin:12px auto 22px!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    row-gap:15px!important;
+  }
+  .toolbar-left,.toolbar-right{justify-content:center!important;flex-wrap:wrap!important}
+  .toolbar-right{flex:0 1 auto}
+  .quick-jump-control{width:min(420px,60vw)!important;flex:1 1 240px}
+}
+@media(max-width:620px){
+  .toolbar{width:calc(100% - 12px)!important;padding:0 6px!important}
+  .toolbar-left,.toolbar-right{width:100%!important;max-width:100%!important;gap:8px!important}
+  .toolbar-left .toolbar-btn{flex:1!important}
+  .toolbar-right .toolbar-btn{flex:0 0 auto!important}
+  .quick-jump-control{min-width:0!important;width:min(330px,calc(100vw - 130px))!important}
+  .decks-section .deck-card .deck-player{padding-right:96px}
+  .decks-section .cards-grid .card-tile{font-size:13.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .toolbar .toolbar-btn::before,.toolbar .quick-jump-control::before{animation:none!important}
+}
+
+
+/* === HOTFIX B.3 — minimal UI refinements over B.2 === */
+/* Lift both deck buttons EXACTLY 2px, away from the ranking label. */
+.decks-section .deck-card .deck-actions{top:-2px!important;}
+
+/* Embossed tournament title without changing its size or layout. */
+#tournamentChroniclesSection .t-ch-heading h2{
+  color:#ffe6a6!important;
+  font-weight:900!important;
+  -webkit-text-stroke:.55px rgba(131,67,15,.52);
+  text-shadow:
+    0 -1px 0 rgba(255,249,210,.96),
+    0 2px 0 rgba(113,58,16,.92),
+    0 3px 3px rgba(9,4,25,.96),
+    0 0 16px rgba(255,204,113,.38),
+    0 0 25px rgba(255,184,74,.13)!important;
+}
+
+/* Light lavender explanation; only a one-pixel, slow breathing motion. */
+#tournamentChroniclesSection .t-ch-heading p{
+  color:#ead0ff!important;
+  font-weight:700!important;
+  text-shadow:0 0 9px rgba(201,137,255,.22);
+  animation:sdB3ChronicleCaption 8s ease-in-out infinite alternate;
+}
+@keyframes sdB3ChronicleCaption{
+  from{transform:translateY(0);text-shadow:0 0 8px rgba(201,137,255,.18)}
+  to{transform:translateY(-1px);text-shadow:0 0 12px rgba(218,173,255,.32)}
+}
+@media(prefers-reduced-motion:reduce){
+  #tournamentChroniclesSection .t-ch-heading p{animation:none!important;transform:none!important;}
+}

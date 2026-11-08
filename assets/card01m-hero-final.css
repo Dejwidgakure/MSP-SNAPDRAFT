@@ -1,0 +1,653 @@
+/* =========================================================
+   CARD 01M — CARD STATS WIZYTÓWKA FINAL / ARCHIVE SCAN V5 VISIBLE DIGITAL BEAM
+   Presentation only. Values remain owned by DraftStatsEngine.
+
+   Visual story:
+   1) the archived card starts as a distinctly blue/cyan digital hologram,
+   2) a scanner travels top -> bottom and materialises the card,
+   3) the card stays fully rendered most of the time,
+   4) while materialised, the archive scanner performs quiet periodic sweeps,
+   5) every few seconds it glitches back into digital form,
+      waits briefly, then the scanner reconstructs it again.
+========================================================= */
+
+.card-profile-page .card-profile-hero{
+  overflow:hidden;
+}
+
+.card-profile-page .detail-hero-grid{
+  grid-template-columns:minmax(320px,420px) minmax(0,1fr)!important;
+  gap:38px!important;
+  align-items:center!important;
+}
+
+/* Clean museum cradle. The card, not the frame, is the effect. */
+.card-profile-page .feature-card{
+  --card-accent:#65e9ff;
+  min-height:424px!important;
+  padding:34px!important;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+  overflow:hidden;
+  perspective:1200px;
+  border-color:rgba(154,246,255,.18)!important;
+  background:
+    radial-gradient(ellipse at 50% 58%,rgba(91,237,255,.045),transparent 42%),
+    linear-gradient(145deg,rgba(8,30,48,.36),rgba(5,8,28,.54))!important;
+  box-shadow:
+    0 26px 58px rgba(0,0,0,.24),
+    inset 0 1px 0 rgba(255,255,255,.07),
+    inset 0 0 42px rgba(83,236,255,.02)!important;
+}
+
+/* Quiet cyan aura from the archive projector. */
+.card-profile-page .feature-card::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:14% 13% 9%;
+  border:0!important;
+  border-radius:44%!important;
+  opacity:.40;
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(213,254,255,.085),transparent 30%),
+    radial-gradient(ellipse at 50% 57%,color-mix(in srgb,var(--card-accent) 10%,transparent),transparent 58%);
+  filter:blur(17px);
+  transform:none;
+  animation:archiveProjectorHalo 6.4s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+
+.card-profile-page .feature-card::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:20%!important;
+  right:20%!important;
+  bottom:29px!important;
+  height:9px!important;
+  opacity:.42;
+  border-radius:50%;
+  background:linear-gradient(90deg,transparent,rgba(121,242,255,.34),transparent)!important;
+  filter:blur(12px)!important;
+  box-shadow:none!important;
+  animation:archiveProjectorFloor 6.4s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+
+/*
+   One long animation owns the physical card. It begins in the same
+   "not loaded yet" language as the Collection lobby, then stays material
+   for most of the cycle before a short archive glitch resets it.
+*/
+.card-profile-page .feature-card .cosmo-card{
+  position:relative;
+  z-index:2;
+  width:min(100%,314px);
+  min-height:354px!important;
+  height:354px!important;
+  border-width:2px!important;
+  border-color:color-mix(in srgb,var(--card-accent) 76%,white 10%)!important;
+  background:
+    linear-gradient(160deg,rgba(8,27,48,.92),rgba(7,12,39,.88)),
+    radial-gradient(circle at 50% 10%,rgba(90,239,255,.11),transparent 40%)!important;
+  box-shadow:
+    18px 24px 44px rgba(0,0,0,.37),
+    0 0 18px color-mix(in srgb,var(--card-accent) 22%,transparent),
+    inset 0 0 18px rgba(255,255,255,.035)!important;
+  transform-style:preserve-3d;
+  transform-origin:50% 54%;
+  will-change:transform,filter,opacity;
+  animation:archiveCardCycle 13.2s ease-in-out infinite;
+}
+
+/* Material layer: galaxytool is literally revealed from TOP TO BOTTOM. */
+.card-profile-page .feature-card .cosmo-card::before{
+  inset:0!important;
+  z-index:-1!important;
+  opacity:0;
+  background:
+    linear-gradient(160deg,rgba(11,8,34,.26),rgba(8,18,48,.10)),
+    url("galaxytool.png") center/cover no-repeat!important;
+  mix-blend-mode:screen;
+  transform:scale(1.055);
+  transform-origin:50% 50%;
+  clip-path:inset(0 0 100% 0);
+  will-change:clip-path,opacity,transform,filter;
+  animation:archiveGalaxyMaterialise 13.2s linear infinite;
+}
+
+/*
+   Digital surface + scanner. During the hologram phase the cyan scanlines
+   sit over the whole card. During reconstruction the bright band travels
+   top -> bottom while the overlay fades away and the galaxy layer is revealed.
+*/
+.card-profile-page .feature-card .cosmo-card::after{
+  inset:0!important;
+  z-index:6!important;
+  pointer-events:none;
+  opacity:.78;
+  mix-blend-mode:screen;
+  background:
+    linear-gradient(180deg,
+      transparent 0,
+      rgba(210,255,255,.05) 22%,
+      rgba(220,255,255,.94) 46%,
+      rgba(78,238,255,.95) 50%,
+      rgba(95,191,255,.26) 58%,
+      transparent 100%),
+    repeating-linear-gradient(180deg,
+      rgba(129,248,255,.13) 0 1px,
+      transparent 1px 5px),
+    linear-gradient(135deg,
+      rgba(26,166,255,.24),
+      rgba(44,210,255,.15) 46%,
+      rgba(78,109,255,.10));
+  background-size:100% 48px,100% 6px,100% 100%!important;
+  background-repeat:no-repeat,repeat,no-repeat!important;
+  background-position:0 -64px,0 0,0 0;
+  box-shadow:
+    inset 0 0 44px rgba(45,185,255,.24),
+    inset 0 0 2px rgba(225,255,255,.44);
+  will-change:opacity,background-position,filter;
+  animation:archiveScannerCycle 13.2s linear infinite;
+}
+
+/* Dedicated visible scanner beam. This is a real child element so the bright
+   digital line sits above the entire card instead of being diluted inside
+   the hologram overlay background. */
+.card-profile-page .feature-card .archive-scan-beam{
+  position:absolute;
+  z-index:12;
+  left:-4%;
+  width:108%;
+  height:7px;
+  top:-22px;
+  opacity:0;
+  pointer-events:none;
+  border-radius:50%;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(57,185,255,.18) 8%,
+      rgba(78,230,255,.88) 28%,
+      rgba(225,255,255,1) 50%,
+      rgba(72,226,255,.92) 72%,
+      rgba(55,170,255,.16) 92%,
+      transparent 100%);
+  box-shadow:
+    0 0 3px rgba(235,255,255,.98),
+    0 0 10px rgba(76,232,255,.96),
+    0 0 22px rgba(45,168,255,.72),
+    0 -9px 24px rgba(45,202,255,.16),
+    0 9px 24px rgba(45,202,255,.22);
+  filter:brightness(1.34) saturate(1.25);
+  mix-blend-mode:screen;
+  will-change:top,opacity,filter,transform;
+  animation:archiveVisibleScanBeam 13.2s linear infinite;
+}
+.card-profile-page .feature-card .archive-scan-beam::before{
+  content:"";
+  position:absolute;
+  left:3%;
+  right:3%;
+  top:-10px;
+  height:27px;
+  background:linear-gradient(180deg,transparent,rgba(68,210,255,.18),rgba(205,255,255,.10),transparent);
+  filter:blur(4px);
+}
+.card-profile-page .feature-card .archive-scan-beam::after{
+  content:"";
+  position:absolute;
+  inset:-2px 7%;
+  background:repeating-linear-gradient(90deg,rgba(235,255,255,.56) 0 2px,transparent 2px 7px);
+  opacity:.32;
+  filter:blur(.25px);
+}
+
+/* First pass materialises the card. Two quieter passes verify the archived
+   object while fully rendered. A final strong pass reconstructs it after
+   the deliberate hologram glitch. */
+@keyframes archiveVisibleScanBeam{
+  0%,3.8%{top:-22px;opacity:0;transform:scaleX(.96)}
+  4%{top:-18px;opacity:.95;transform:scaleX(1)}
+  7%{top:24%;opacity:1}
+  10%{top:55%;opacity:.98}
+  13%{top:86%;opacity:.88}
+  15%{top:calc(100% + 14px);opacity:0}
+
+  15.1%,29.7%{top:-22px;opacity:0}
+  30%{top:-18px;opacity:.68;transform:scaleX(.98)}
+  32%{top:31%;opacity:.82}
+  35%{top:77%;opacity:.72}
+  37%{top:calc(100% + 14px);opacity:0}
+
+  37.1%,55.7%{top:-22px;opacity:0}
+  56%{top:-18px;opacity:.60;transform:scaleX(.97)}
+  58%{top:33%;opacity:.76}
+  61%{top:82%;opacity:.66}
+  63%{top:calc(100% + 14px);opacity:0}
+
+  63.1%,77.1%{top:-22px;opacity:0}
+  77.3%{top:-18px;opacity:1;transform:scaleX(1.01);filter:brightness(1.55) saturate(1.36)}
+  79%{top:27%;opacity:1}
+  81%{top:72%;opacity:.98}
+  82.8%{top:calc(100% + 14px);opacity:0;filter:brightness(1.34) saturate(1.25)}
+  83%,100%{top:-22px;opacity:0}
+}
+
+.card-profile-page .feature-card .cosmo-name{
+  position:relative;
+  z-index:3;
+  min-height:286px!important;
+  padding:76px 20px 22px!important;
+  font-size:clamp(25px,2.25vw,39px)!important;
+  text-shadow:
+    0 0 9px color-mix(in srgb,var(--card-accent) 58%,transparent),
+    0 0 20px color-mix(in srgb,var(--card-accent) 23%,transparent),
+    0 3px 7px rgba(0,0,0,.62)!important;
+  animation:archiveCardContentCycle 13.2s linear infinite;
+}
+
+.card-profile-page .feature-card .cosmo-badge{
+  z-index:4;
+  width:56px!important;
+  height:56px!important;
+  top:17px!important;
+  font-size:24px!important;
+  animation:archiveCardContentCycle 13.2s linear infinite;
+}
+.card-profile-page .feature-card .cosmo-badge.cost{left:17px!important}
+.card-profile-page .feature-card .cosmo-badge.power{right:17px!important}
+
+/* 0-4% digital hold; 4-15% first scanner; 15-74% fully materialised;
+   74-82% short glitch/dematerialise; 82-100% digital hold awaiting next scan. */
+@keyframes archiveCardCycle{
+  0%,4%{
+    opacity:.72;
+    transform:perspective(1050px) rotateY(-8.5deg) rotateX(2.1deg) rotateZ(-1.05deg) translate3d(0,2px,0) scale(.987);
+    filter:grayscale(.78) sepia(.72) hue-rotate(154deg) saturate(4.4) brightness(1.17) contrast(1.05) drop-shadow(0 0 10px rgba(54,195,255,.34));
+  }
+  8%{
+    opacity:.82;
+    filter:grayscale(.48) sepia(.48) hue-rotate(154deg) saturate(3.2) brightness(1.14) contrast(1.04) drop-shadow(0 0 9px rgba(54,195,255,.26));
+  }
+  15%{
+    opacity:1;
+    transform:perspective(1050px) rotateY(-7.2deg) rotateX(1.7deg) rotateZ(-.9deg) translate3d(0,-1px,0) scale(1);
+    filter:saturate(1.04) hue-rotate(0deg) brightness(1.02) contrast(1.01) drop-shadow(0 0 3px rgba(86,239,255,.08));
+  }
+  43%{
+    opacity:1;
+    transform:perspective(1050px) rotateY(-5.7deg) rotateX(1.1deg) rotateZ(-.48deg) translate3d(0,-6px,0) scale(1.004);
+    filter:saturate(1.07) hue-rotate(0deg) brightness(1.035) contrast(1.01);
+  }
+  70%{
+    opacity:1;
+    transform:perspective(1050px) rotateY(-7deg) rotateX(1.6deg) rotateZ(-.82deg) translate3d(0,-2px,0) scale(1);
+    filter:saturate(1.03) hue-rotate(0deg) brightness(1.015) contrast(1.01);
+  }
+  74%{
+    opacity:.96;
+    transform:perspective(1050px) rotateY(-7deg) rotateX(1.6deg) rotateZ(-.82deg) translate3d(-1px,-2px,0) scale(1.002);
+    filter:saturate(.72) hue-rotate(22deg) brightness(1.26) contrast(1.15);
+  }
+  75%{
+    opacity:.78;
+    transform:perspective(1050px) rotateY(-7deg) rotateX(1.6deg) rotateZ(-.82deg) translate3d(2px,-1px,0) scale(.995);
+    filter:grayscale(.70) sepia(.66) hue-rotate(154deg) saturate(4.7) brightness(1.28) contrast(1.16) drop-shadow(0 0 12px rgba(55,198,255,.32));
+  }
+  76%{
+    opacity:.98;
+    transform:perspective(1050px) rotateY(-7deg) rotateX(1.6deg) rotateZ(-.82deg) translate3d(-2px,-2px,0) scale(1.004);
+    filter:saturate(.86) hue-rotate(8deg) brightness(1.10) contrast(1.07);
+  }
+  77.3%{
+    opacity:.68;
+    transform:perspective(1050px) rotateY(-8deg) rotateX(2deg) rotateZ(-1.02deg) translate3d(1px,1px,0) scale(.986);
+    filter:grayscale(.82) sepia(.74) hue-rotate(154deg) saturate(4.8) brightness(1.18) contrast(1.06) drop-shadow(0 0 12px rgba(52,194,255,.36));
+  }
+  82%,100%{
+    opacity:.72;
+    transform:perspective(1050px) rotateY(-8.5deg) rotateX(2.1deg) rotateZ(-1.05deg) translate3d(0,2px,0) scale(.987);
+    filter:grayscale(.78) sepia(.72) hue-rotate(154deg) saturate(4.4) brightness(1.17) contrast(1.05) drop-shadow(0 0 10px rgba(54,195,255,.34));
+  }
+}
+
+@keyframes archiveGalaxyMaterialise{
+  0%,4%{
+    opacity:0;
+    clip-path:inset(0 0 100% 0);
+    transform:scale(1.065) translate3d(-.6%,-.2%,0);
+    filter:brightness(1.08) saturate(.85);
+  }
+  7%{opacity:.12;clip-path:inset(0 0 78% 0)}
+  10%{opacity:.18;clip-path:inset(0 0 48% 0)}
+  13%{opacity:.22;clip-path:inset(0 0 16% 0)}
+  15%,70%{
+    opacity:.22;
+    clip-path:inset(0 0 0 0);
+    transform:scale(1.055) translate3d(0,0,0);
+    filter:brightness(1) saturate(1.08);
+  }
+  43%{
+    opacity:.24;
+    clip-path:inset(0 0 0 0);
+    transform:scale(1.082) translate3d(1%,.5%,0);
+    filter:brightness(1.04) saturate(1.12);
+  }
+  74%{opacity:.20;clip-path:inset(0 0 0 0)}
+  75%{opacity:.05;clip-path:inset(18% 0 14% 0)}
+  76%{opacity:.17;clip-path:inset(0 0 8% 0)}
+  77.3%{opacity:.025;clip-path:inset(0 0 88% 0)}
+  82%,100%{
+    opacity:0;
+    clip-path:inset(0 0 100% 0);
+    transform:scale(1.065) translate3d(-.6%,-.2%,0);
+    filter:brightness(1.08) saturate(.85);
+  }
+}
+
+@keyframes archiveScannerCycle{
+  0%,3.8%{
+    opacity:.84;
+    background-position:0 -64px,0 0,0 0;
+    filter:brightness(1.06) saturate(1.18);
+  }
+  4%{
+    opacity:.92;
+    background-position:0 -52px,0 0,0 0;
+    filter:brightness(1.20) saturate(1.22);
+  }
+  7%{
+    opacity:.74;
+    background-position:0 72px,0 0,0 0;
+    filter:brightness(1.18);
+  }
+  10%{
+    opacity:.56;
+    background-position:0 185px,0 0,0 0;
+    filter:brightness(1.13);
+  }
+  13%{
+    opacity:.33;
+    background-position:0 300px,0 0,0 0;
+    filter:brightness(1.08);
+  }
+  15%,29%{
+    opacity:.055;
+    background-position:0 410px,0 0,0 0;
+    filter:brightness(1);
+  }
+
+  /* Quiet archive verification sweep while the card remains fully materialised. */
+  30%{
+    opacity:.10;
+    background-position:0 -58px,0 0,0 0;
+    filter:brightness(1.06);
+  }
+  32%{
+    opacity:.32;
+    background-position:0 68px,0 0,0 0;
+    filter:brightness(1.20);
+  }
+  35%{
+    opacity:.26;
+    background-position:0 250px,0 0,0 0;
+    filter:brightness(1.15);
+  }
+  37%{
+    opacity:.07;
+    background-position:0 410px,0 0,0 0;
+    filter:brightness(1);
+  }
+  38%,55%{
+    opacity:.055;
+    background-position:0 410px,0 0,0 0;
+  }
+
+  /* Second subtle verification sweep before the archive glitch. */
+  56%{
+    opacity:.09;
+    background-position:0 -58px,0 0,0 0;
+  }
+  58%{
+    opacity:.28;
+    background-position:0 92px,0 0,0 0;
+    filter:brightness(1.18);
+  }
+  61%{
+    opacity:.22;
+    background-position:0 280px,0 0,0 0;
+    filter:brightness(1.13);
+  }
+  63%,70%{
+    opacity:.055;
+    background-position:0 410px,0 0,0 0;
+    filter:brightness(1);
+  }
+
+  74%{
+    opacity:.18;
+    background-position:0 410px,0 0,0 0;
+    filter:brightness(1.22);
+  }
+  75%{
+    opacity:.82;
+    background-position:0 86px,0 -2px,0 0;
+    filter:brightness(1.48) contrast(1.16) saturate(1.20);
+  }
+  76%{
+    opacity:.31;
+    background-position:0 244px,0 2px,0 0;
+    filter:brightness(1.20);
+  }
+  77.3%{
+    opacity:.88;
+    background-position:0 -48px,0 0,0 0;
+    filter:brightness(1.24) saturate(1.18);
+  }
+  82%,100%{
+    opacity:.84;
+    background-position:0 -64px,0 0,0 0;
+    filter:brightness(1.06) saturate(1.18);
+  }
+}
+
+@keyframes archiveCardContentCycle{
+  0%,4%,82%,100%{
+    opacity:.72;
+    text-shadow:0 0 6px rgba(195,255,255,.82),0 0 18px rgba(62,230,255,.58)!important;
+  }
+  8%{opacity:.86}
+  15%,70%{opacity:1}
+  74%{opacity:.92}
+  75%{opacity:.62}
+  76%{opacity:1}
+  77.3%{opacity:.66}
+}
+
+@keyframes archiveProjectorHalo{
+  from{opacity:.30;transform:scale(.965)}
+  to{opacity:.43;transform:scale(1.02)}
+}
+@keyframes archiveProjectorFloor{
+  from{opacity:.30;transform:scaleX(.88)}
+  to{opacity:.45;transform:scaleX(1.02)}
+}
+
+/* The Wizytówka is intentionally a Big Four, not a six-stat dashboard. */
+.card-profile-page #summaryStats{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+.card-profile-page #summaryStats .hero-kpi{
+  min-height:126px;
+  padding:17px 15px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-radius:19px!important;
+}
+.card-profile-page #summaryStats .hero-kpi b{
+  margin-bottom:10px!important;
+  font-size:clamp(19px,1.65vw,27px)!important;
+  line-height:1.08;
+}
+.card-profile-page #summaryStats .hero-kpi span{
+  font-size:10px!important;
+  line-height:1.25;
+}
+.card-profile-page #summaryStats .hero-kpi-title{
+  border-color:rgba(255,212,92,.21)!important;
+  background:
+    radial-gradient(circle at 50% 100%,rgba(255,198,70,.075),transparent 48%),
+    linear-gradient(145deg,rgba(29,28,24,.48),rgba(10,10,31,.63))!important;
+}
+.card-profile-page #summaryStats .hero-kpi-title b{color:#fff0ad}
+.card-profile-page #summaryStats .hero-kpi-legend{
+  border-color:rgba(185,136,255,.20)!important;
+  background:
+    radial-gradient(circle at 50% 100%,rgba(174,106,255,.08),transparent 48%),
+    linear-gradient(145deg,rgba(21,17,39,.54),rgba(8,12,34,.64))!important;
+}
+.card-profile-page #summaryStats .hero-kpi-legend b{color:#f2e2ff}
+
+/* Interpretive strip: make the narrative cards easier to scan. */
+.card-profile-page .card-showcase-strip .showcase-data b{
+  font-size:clamp(19px,1.55vw,24px)!important;
+}
+.card-profile-page .card-showcase-strip .showcase-data span{
+  max-width:330px;
+  font-size:10px!important;
+  line-height:1.32!important;
+}
+
+@media(max-width:1180px){
+  .card-profile-page .detail-hero-grid{
+    grid-template-columns:minmax(290px,360px) minmax(0,1fr)!important;
+    gap:28px!important;
+  }
+  .card-profile-page #summaryStats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:900px){
+  .card-profile-page .detail-hero-grid{grid-template-columns:1fr!important}
+  .card-profile-page .feature-card{min-height:390px!important}
+  .card-profile-page .feature-card .cosmo-card{width:min(100%,320px)}
+}
+@media(max-width:620px){
+  .card-profile-page .feature-card{min-height:350px!important;padding:28px 20px!important}
+  .card-profile-page .feature-card .cosmo-card{height:320px!important;min-height:320px!important}
+  .card-profile-page .feature-card .cosmo-name{min-height:252px!important;padding-top:70px!important}
+  .card-profile-page #summaryStats{grid-template-columns:1fr!important}
+  .card-profile-page #summaryStats .hero-kpi{min-height:105px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .card-profile-page .feature-card::before,
+  .card-profile-page .feature-card::after,
+  .card-profile-page .feature-card .cosmo-card,
+  .card-profile-page .feature-card .cosmo-card::before,
+  .card-profile-page .feature-card .cosmo-card::after,
+  .card-profile-page .feature-card .archive-scan-beam,
+  .card-profile-page .feature-card .cosmo-name,
+  .card-profile-page .feature-card .cosmo-badge{
+    animation:none!important;
+  }
+  .card-profile-page .feature-card .cosmo-card{
+    opacity:1;
+    filter:none;
+    transform:perspective(1050px) rotateY(-6deg) rotateX(1.5deg) rotateZ(-.7deg);
+  }
+  .card-profile-page .feature-card .cosmo-card::before{
+    opacity:.22!important;
+    clip-path:inset(0 0 0 0)!important;
+  }
+  .card-profile-page .feature-card .cosmo-card::after{opacity:.07!important}
+  .card-profile-page .feature-card .archive-scan-beam{opacity:0!important}
+}
+
+/* =========================================================
+   CARD PROFILE — HISTORY SHOWCASE STRIP FINAL POLISH
+   Presentation-only pass. Keeps DraftStatsEngine-backed values intact.
+========================================================= */
+.card-profile-page .card-showcase-strip .showcase-data-card{
+  min-height:178px;
+}
+
+.card-profile-page .card-showcase-strip .museum-showcase-title{
+  left:50%;
+  right:auto;
+  top:15px;
+  width:calc(100% - 34px);
+  transform:translateX(-50%);
+  text-align:center;
+  color:#8db7c1;
+  font-size:9px;
+  letter-spacing:.14em;
+}
+
+.card-profile-page .card-showcase-strip .showcase-data{
+  left:22px;
+  right:22px;
+  top:56%;
+  bottom:auto;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.card-profile-page .card-showcase-strip .showcase-data b{
+  width:100%;
+  margin:0;
+  color:#efffff;
+  font-size:clamp(20px,1.7vw,26px)!important;
+  line-height:1.12!important;
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+}
+
+.card-profile-page .card-showcase-strip .showcase-data span{
+  width:min(100%,350px);
+  max-width:350px;
+  margin:8px auto 0;
+  color:#82a4ad;
+  font-size:10px!important;
+  line-height:1.34!important;
+  text-align:center;
+  text-wrap:balance;
+}
+
+/* The hologram is atmosphere, not reserved layout space. */
+.card-profile-page .card-showcase-strip .showcase-data-card .holo-slot{
+  left:50%;
+  right:auto;
+  top:57%;
+  width:74px;
+  height:103px;
+  opacity:.12;
+  filter:saturate(1.1);
+  pointer-events:none;
+}
+
+.card-profile-page .card-showcase-strip .showcase-data-card:hover .holo-slot{
+  opacity:.18;
+}
+
+@media(max-width:620px){
+  .card-profile-page .card-showcase-strip .showcase-data-card{
+    min-height:158px;
+  }
+  .card-profile-page .card-showcase-strip .showcase-data{
+    left:18px;
+    right:18px;
+    top:57%;
+  }
+  .card-profile-page .card-showcase-strip .showcase-data b{
+    font-size:clamp(19px,6vw,24px)!important;
+  }
+}

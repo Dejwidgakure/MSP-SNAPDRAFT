@@ -1,0 +1,143 @@
+/* MSP SNAPDRAFT — profil pojedynczej karty, PATCH V4
+   Zmiana jedynie rozmieszczenia naklejek i barw kafli historii.
+   ZERO dodanych odstępów między panelami i ZERO zmian silnika statystyk. */
+
+/* Jeff z navbara Kolekcji Kart przy nazwie eksponatu — nie przykrywa tekstu ani danych. */
+.card-profile-page .msp-card-hero-copy {
+  position:relative;
+  min-width:0;
+  isolation:isolate;
+}
+.card-profile-page .msp-card-hero-jeff {
+  display:block;
+  position:absolute;
+  top:-6px;
+  right:-1%;
+  width:clamp(102px,11.5vw,172px);
+  height:auto;
+  max-height:177px;
+  object-fit:contain;
+  object-position:top right;
+  pointer-events:none;
+  user-select:none;
+  z-index:4;
+  filter:drop-shadow(0 4px 10px rgba(0,230,255,.22));
+  animation:mspCardHeroFloat 7.4s ease-in-out infinite;
+}
+.card-profile-page .msp-card-hero-jeff[hidden]{display:none!important}
+.card-profile-page .msp-card-hero-copy > .kicker,
+.card-profile-page .msp-card-hero-copy > .hero-title,
+.card-profile-page .msp-card-hero-copy > .hero-subtitle {
+  padding-right:clamp(112px,12vw,185px);
+  position:relative;
+  z-index:1;
+}
+@keyframes mspCardHeroFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+/* Centralny Jeff między panelami — absolutnie względem strony, nie sekcji.
+   Skrypt ustawia tylko współrzędną Y, bez zmiany paddingów czy siatek. */
+.card-profile-page {position:relative;}
+.card-profile-page > .msp-main-heritage-sticker {
+  display:block!important;
+  position:absolute!important;
+  top:0;
+  left:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:clamp(110px,9vw,134px)!important;
+  max-height:138px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  z-index:150!important;
+  pointer-events:none!important;
+  user-select:none!important;
+  translate:-50% -50%;
+  animation:mspCardJeffFloat 6.2s ease-in-out infinite!important;
+  filter:drop-shadow(0 6px 12px rgba(5,2,29,.42)) drop-shadow(0 0 7px rgba(74,216,255,.18))!important;
+}
+/* Rozkład Miejsc pozostaje bez naklejki: przenosimy, nie dublujemy. */
+
+/* Zróżnicowany układ pozostałych Jeffów, bez zmian paddingu paneli. */
+.card-profile-page .card-spectrum-panel > .msp-corner-spectrum {
+  right:44%!important;
+  left:auto!important;
+  width:clamp(105px,10.3vw,143px)!important;
+}
+.card-profile-page .card-pilots-panel > .msp-corner-pilots {
+  left:19%!important;
+  right:auto!important;
+  width:clamp(103px,10.5vw,148px)!important;
+  object-position:center top!important;
+}
+.card-profile-page .card-synergy-panel > .msp-corner-synergy {
+  right:8px!important;
+  left:auto!important;
+  width:clamp(130px,13vw,190px)!important;
+  max-height:190px!important;
+}
+.card-profile-page .card-history-panel > .msp-corner-history {
+  left:50%!important;
+  right:auto!important;
+  width:clamp(102px,11.2vw,159px)!important;
+  object-position:center top!important;
+  translate:-50% 0;
+}
+/* Sekrety, Decki — dotychczasowe zatwierdzone pozycje. */
+
+/* Delikatne, naprzemienne kolory dla historii draftów, także przyszłych wpisów.
+   Sekwencja jest celowo nieregularna (nie tęczowa kolejność), CSS nth-child
+   działa również dla nowych kart karuzeli bez zmian JS. */
+.card-profile-page .card-history-entry {
+  --msp-history-rgb: 95,211,255;
+  background:
+    radial-gradient(ellipse at 88% 8%,rgba(var(--msp-history-rgb),.14),transparent 64%),
+    linear-gradient(155deg,rgba(var(--msp-history-rgb),.06),rgba(7,18,42,.55) 50%,rgba(9,10,31,.57))!important;
+  border-color:rgba(var(--msp-history-rgb),.25)!important;
+  box-shadow:
+    0 13px 27px rgba(0,0,0,.22),
+    inset 0 1px rgba(255,255,255,.075),
+    inset 0 0 21px rgba(var(--msp-history-rgb),.065)!important;
+}
+.card-profile-page .card-history-entry:nth-child(8n+1) {--msp-history-rgb:95,211,255;} /* cyan */
+.card-profile-page .card-history-entry:nth-child(8n+2) {--msp-history-rgb:232,164,255;}/* pink */
+.card-profile-page .card-history-entry:nth-child(8n+3) {--msp-history-rgb:129,244,197;}/* mint */
+.card-profile-page .card-history-entry:nth-child(8n+4) {--msp-history-rgb:255,204,116;}/* gold */
+.card-profile-page .card-history-entry:nth-child(8n+5) {--msp-history-rgb:168,138,255;}/* violet */
+.card-profile-page .card-history-entry:nth-child(8n+6) {--msp-history-rgb:246,154,168;}/* coral */
+.card-profile-page .card-history-entry:nth-child(8n+7) {--msp-history-rgb:133,196,255;}/* blue */
+.card-profile-page .card-history-entry:nth-child(8n+8) {--msp-history-rgb:188,233,132;}/* lime */
+
+@media(max-width:1050px){
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:39%!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:17%!important;}
+}
+@media(max-width:780px){
+  .card-profile-page .msp-card-hero-jeff{width:clamp(80px,17vw,115px);right:0;top:0;max-height:120px;}
+  .card-profile-page .msp-card-hero-copy > .kicker,
+  .card-profile-page .msp-card-hero-copy > .hero-title,
+  .card-profile-page .msp-card-hero-copy > .hero-subtitle {padding-right:clamp(86px,19vw,124px);}
+  .card-profile-page > .msp-main-heritage-sticker{width:112px!important;max-height:114px!important;}
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:19%!important;left:auto!important;width:109px!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:12%!important;right:auto!important;width:109px!important;}
+  .card-profile-page .card-synergy-panel > .msp-corner-synergy{right:2px!important;left:auto!important;width:127px!important;max-height:129px!important;}
+  .card-profile-page .card-history-panel > .msp-corner-history{left:50%!important;right:auto!important;width:116px!important;}
+}
+@media(max-width:480px){
+  .card-profile-page .msp-card-hero-jeff{width:78px;top:1px;max-height:90px;}
+  .card-profile-page .msp-card-hero-copy > .kicker,
+  .card-profile-page .msp-card-hero-copy > .hero-title,
+  .card-profile-page .msp-card-hero-copy > .hero-subtitle {padding-right:81px;}
+  .card-profile-page > .msp-main-heritage-sticker{width:87px!important;max-height:89px!important;}
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:14%!important;left:auto!important;width:78px!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:8%!important;right:auto!important;width:79px!important;}
+  .card-profile-page .card-synergy-panel > .msp-corner-synergy{width:100px!important;max-height:103px!important;}
+  .card-profile-page .card-history-panel > .msp-corner-history{width:82px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .card-profile-page .msp-card-hero-jeff,
+  .card-profile-page > .msp-main-heritage-sticker {animation:none!important;}
+}

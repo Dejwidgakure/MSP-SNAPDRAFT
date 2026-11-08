@@ -1,0 +1,81 @@
+/* MSP SNAPDRAFT — profil pojedynczej karty, PATCH V6
+   Precyzyjna korekta rozmieszczenia opisów sekcji względem naklejek. */
+
+.card-profile-page .msp-card-hero-copy {position:relative;min-width:0;isolation:isolate;}
+.card-profile-page .msp-card-hero-jeff {display:block;position:absolute;top:-6px;right:-1%;width:clamp(102px,11.5vw,172px);height:auto;max-height:177px;object-fit:contain;object-position:top right;pointer-events:none;user-select:none;z-index:4;filter:drop-shadow(0 4px 10px rgba(0,230,255,.22));animation:mspCardHeroFloat 7.4s ease-in-out infinite;}
+.card-profile-page .msp-card-hero-jeff[hidden]{display:none!important}
+.card-profile-page .msp-card-hero-copy > .kicker,.card-profile-page .msp-card-hero-copy > .hero-title,.card-profile-page .msp-card-hero-copy > .hero-subtitle{padding-right:clamp(112px,12vw,185px);position:relative;z-index:1;}
+@keyframes mspCardHeroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.card-profile-page {position:relative;}
+.card-profile-page > .msp-main-heritage-sticker {display:block!important;position:absolute!important;top:0;left:50%!important;right:auto!important;bottom:auto!important;width:clamp(144px,11.8vw,188px)!important;max-height:192px!important;height:auto!important;object-fit:contain!important;object-position:center!important;z-index:150!important;pointer-events:none!important;user-select:none!important;translate:-50% -50%;animation:mspCardJeffFloat 6.2s ease-in-out infinite!important;filter:drop-shadow(0 10px 18px rgba(5,2,29,.44)) drop-shadow(0 0 14px rgba(74,216,255,.34)) drop-shadow(0 0 26px rgba(74,216,255,.18))!important;}
+
+.card-profile-page .card-spectrum-panel > .msp-corner-spectrum {right:42%!important;left:auto!important;width:clamp(108px,10.6vw,150px)!important;}
+.card-profile-page .card-pilots-panel > .msp-corner-pilots {left:21%!important;right:auto!important;width:clamp(124px,12.3vw,176px)!important;object-position:center top!important;}
+.card-profile-page .card-synergy-panel > .msp-corner-synergy {right:38px!important;left:auto!important;width:clamp(152px,14.8vw,224px)!important;max-height:224px!important;}
+.card-profile-page .card-deck-showcase-panel > .msp-corner-decks {top:-20px!important;}
+.card-profile-page .card-curiosities-panel > .msp-corner-secrets {left:50%!important;right:auto!important;width:clamp(112px,11.5vw,164px)!important;translate:-50% 0;}
+.card-profile-page .card-history-panel > .msp-corner-history {left:50%!important;right:auto!important;width:clamp(104px,11.4vw,162px)!important;object-position:center top!important;translate:-50% 0;}
+
+.card-profile-page .card-section-head > p {margin:2px 0 0;color:#b9fbff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:clamp(11px,.92vw,13px);line-height:1.48;letter-spacing:.03em;text-shadow:0 0 10px rgba(0,240,255,.18);max-width:66ch;}
+.card-profile-page .card-alltime-panel .card-section-head > p,.card-profile-page .card-trajectory-panel .card-section-head > p,.card-profile-page .card-finishes-panel .card-section-head > p{max-width:68ch;}
+.card-profile-page .card-collection-position-panel .card-section-head > p{max-width:min(56ch,49%);margin-left:24%;padding-right:0;text-align:left;}
+.card-profile-page .card-spectrum-panel .card-section-head > p{max-width:min(52ch,51%);margin-left:17%;padding-right:0;text-align:left;}
+.card-profile-page .card-pilots-panel .card-section-head > p{max-width:min(56ch,57%);margin-left:22%;padding-right:0;text-align:left;}
+.card-profile-page .card-synergy-panel .card-section-head > p{max-width:min(62ch,50%);margin-left:0;padding-right:0;text-align:left;}
+.card-profile-page .card-deck-showcase-panel .card-section-head > p{max-width:min(48ch,44%);padding-right:0;text-align:left;}
+.card-profile-page .card-curiosities-panel .card-section-head > p{max-width:min(52ch,42%);margin-left:31%;margin-right:0;padding-right:0;text-align:left;}
+.card-profile-page .card-history-panel .card-section-head > p{max-width:min(50ch,41%);margin-left:33%;margin-right:0;padding-right:0;text-align:left;}
+
+.card-profile-page .card-history-entry {--msp-history-rgb: 95,211,255;background:radial-gradient(ellipse at 88% 8%,rgba(var(--msp-history-rgb),.14),transparent 64%),linear-gradient(155deg,rgba(var(--msp-history-rgb),.06),rgba(7,18,42,.55) 50%,rgba(9,10,31,.57))!important;border-color:rgba(var(--msp-history-rgb),.25)!important;box-shadow:0 13px 27px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.075),inset 0 0 21px rgba(var(--msp-history-rgb),.065)!important;}
+.card-profile-page .card-history-entry:nth-child(8n+1) {--msp-history-rgb:95,211,255;}
+.card-profile-page .card-history-entry:nth-child(8n+2) {--msp-history-rgb:232,164,255;}
+.card-profile-page .card-history-entry:nth-child(8n+3) {--msp-history-rgb:129,244,197;}
+.card-profile-page .card-history-entry:nth-child(8n+4) {--msp-history-rgb:255,204,116;}
+.card-profile-page .card-history-entry:nth-child(8n+5) {--msp-history-rgb:168,138,255;}
+.card-profile-page .card-history-entry:nth-child(8n+6) {--msp-history-rgb:246,154,168;}
+.card-profile-page .card-history-entry:nth-child(8n+7) {--msp-history-rgb:133,196,255;}
+.card-profile-page .card-history-entry:nth-child(8n+8) {--msp-history-rgb:188,233,132;}
+
+@media(max-width:1050px){
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:38%!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:18%!important;}
+  .card-profile-page .card-synergy-panel > .msp-corner-synergy{right:22px!important;}
+  .card-profile-page .card-collection-position-panel .card-section-head > p{max-width:53%;margin-left:22%;}
+  .card-profile-page .card-spectrum-panel .card-section-head > p{max-width:48%;margin-left:14%;}
+  .card-profile-page .card-pilots-panel .card-section-head > p{margin-left:18%;max-width:55%;}
+  .card-profile-page .card-synergy-panel .card-section-head > p{max-width:48%;}
+  .card-profile-page .card-deck-showcase-panel .card-section-head > p{max-width:42%;}
+  .card-profile-page .card-curiosities-panel .card-section-head > p{max-width:40%;margin-left:34%;}
+  .card-profile-page .card-history-panel .card-section-head > p{max-width:38%;margin-left:36%;}
+}
+@media(max-width:780px){
+  .card-profile-page .msp-card-hero-jeff{width:clamp(80px,17vw,115px);right:0;top:0;max-height:120px;}
+  .card-profile-page .msp-card-hero-copy > .kicker,.card-profile-page .msp-card-hero-copy > .hero-title,.card-profile-page .msp-card-hero-copy > .hero-subtitle{padding-right:clamp(86px,19vw,124px);}
+  .card-profile-page > .msp-main-heritage-sticker{width:126px!important;max-height:128px!important;}
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:15%!important;left:auto!important;width:116px!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:10%!important;right:auto!important;width:126px!important;}
+  .card-profile-page .card-synergy-panel > .msp-corner-synergy{right:6px!important;left:auto!important;width:140px!important;max-height:142px!important;}
+  .card-profile-page .card-curiosities-panel > .msp-corner-secrets{width:120px!important;}
+  .card-profile-page .card-history-panel > .msp-corner-history{width:120px!important;}
+  .card-profile-page .card-section-head > p{font-size:12px;line-height:1.42;}
+  .card-profile-page .card-collection-position-panel .card-section-head > p,
+  .card-profile-page .card-pilots-panel .card-section-head > p,
+  .card-profile-page .card-spectrum-panel .card-section-head > p,
+  .card-profile-page .card-synergy-panel .card-section-head > p,
+  .card-profile-page .card-deck-showcase-panel .card-section-head > p,
+  .card-profile-page .card-curiosities-panel .card-section-head > p,
+  .card-profile-page .card-history-panel .card-section-head > p{max-width:100%;margin-left:0;margin-right:0;padding-right:0;text-align:left;}
+}
+@media(max-width:480px){
+  .card-profile-page .msp-card-hero-jeff{width:78px;top:1px;max-height:90px;}
+  .card-profile-page .msp-card-hero-copy > .kicker,.card-profile-page .msp-card-hero-copy > .hero-title,.card-profile-page .msp-card-hero-copy > .hero-subtitle{padding-right:81px;}
+  .card-profile-page > .msp-main-heritage-sticker{width:104px!important;max-height:106px!important;}
+  .card-profile-page .card-spectrum-panel > .msp-corner-spectrum{right:10%!important;left:auto!important;width:84px!important;}
+  .card-profile-page .card-pilots-panel > .msp-corner-pilots{left:7%!important;right:auto!important;width:92px!important;}
+  .card-profile-page .card-synergy-panel > .msp-corner-synergy{width:112px!important;max-height:116px!important;right:4px!important;}
+  .card-profile-page .card-curiosities-panel > .msp-corner-secrets{width:90px!important;}
+  .card-profile-page .card-history-panel > .msp-corner-history{width:88px!important;}
+  .card-profile-page .card-section-head > p{font-size:11px;}
+}
+@media(prefers-reduced-motion:reduce){.card-profile-page .msp-card-hero-jeff,.card-profile-page > .msp-main-heritage-sticker{animation:none!important;}}

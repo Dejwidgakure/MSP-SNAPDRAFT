@@ -1,0 +1,146 @@
+/* MSP SNAPDRAFT · PATCH B · Kroniki Tournament K’un-Lun visual polish
+   Installed AFTER draft-tournament-chronicles.css, does not alter engine or fixtures.
+   Art is the same canonical assets/tournament used in Patch A. */
+
+/* ===== Toolbar: separate and centered quick-jump label, no collisions with logo ===== */
+.toolbar{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  width:min(1320px,calc(100% - 32px))!important;
+  margin:12px auto 24px!important;
+  padding:12px clamp(10px,2vw,20px)!important;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  column-gap:clamp(18px,4vw,54px);
+  row-gap:16px;
+  pointer-events:auto;
+  z-index:6;
+}
+.toolbar-left,.toolbar-right{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;min-width:0}
+.toolbar-right{max-width:100%}
+.quick-jump-control{position:relative;isolation:isolate;display:flex;flex-direction:column;gap:8px;align-items:stretch;width:min(390px,60vw);min-width:0}
+.quick-jump-control select{
+  width:100%;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  border:1px solid rgba(111,233,255,.55);box-shadow:0 0 16px rgba(44,218,251,.18),inset 0 0 10px rgba(64,76,145,.20);
+}
+.quick-jump-label{
+  order:2;width:100%;min-width:0;flex:none!important;text-align:center;
+  font:700 11px/1.5 'Orbitron','Rajdhani',sans-serif;
+  letter-spacing:.18em;color:#b5eeff;text-shadow:0 0 10px rgba(66,221,255,.55);white-space:normal;
+}
+.toolbar-btn{
+  position:relative;isolation:isolate;overflow:hidden;
+  border-color:rgba(98,224,255,.48)!important;
+  box-shadow:inset 0 0 12px rgba(41,171,240,.09),0 0 13px rgba(0,240,255,.12)!important;
+  text-shadow:0 0 10px rgba(96,219,255,.22);
+}
+.toolbar-btn::before,.quick-jump-control::before{
+  content:"";position:absolute;pointer-events:none;inset:-1px;border-radius:inherit;padding:2px;
+  background:conic-gradient(from 45deg,transparent 0deg 263deg,rgba(76,208,255,.28) 278deg,#a3f9ff 308deg,#fff 327deg,rgba(47,172,246,.26) 345deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  animation:kronikiJumpEdge 9s linear infinite;
+}
+.quick-jump-control::before{bottom:28px;border-radius:14px}
+@keyframes kronikiJumpEdge{to{transform:rotate(360deg)}}
+.toolbar-btn:hover{border-color:#b8f7ff!important;filter:brightness(1.13)}
+
+/* ===== K’un-Lun tournament bracket; image remains decorative, labels always readable ===== */
+.tournament-chronicles-section{isolation:isolate;border-color:rgba(255,204,95,.66)!important;
+ box-shadow:0 0 38px rgba(214,135,248,.13),inset 0 0 33px rgba(235,182,78,.08)!important}
+.content .tournament-chronicles-section.section-card::before{
+  background-image:linear-gradient(180deg,rgba(7,9,29,.66),rgba(15,6,42,.80) 46%,rgba(8,8,27,.84)),url('assets/tournament/tournament_kunlun_bg.webp');
+  background-size:cover,cover;background-position:center,center 65%;
+  background-repeat:no-repeat;opacity:1;mix-blend-mode:normal;z-index:0;
+}
+.tournament-chronicles-section .section-inner{z-index:1}
+.t-ch-heading{padding:9px 0 10px;position:relative}
+.t-ch-heading h2{display:flex;align-items:center;gap:11px;color:#fff0c6;text-shadow:0 0 22px rgba(244,186,79,.30),0 0 25px rgba(194,68,245,.24)}
+.t-ch-heading h2::before{
+  content:"";display:inline-block;flex:0 0 clamp(54px,7vw,88px);width:clamp(54px,7vw,88px);height:clamp(54px,7vw,88px);
+  background:url('assets/tournament/jeff_tournament_logo.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 12px rgba(240,182,85,.30)) drop-shadow(0 0 18px rgba(169,83,255,.22));
+}
+.t-ch-overline{color:#ffe4a8;text-shadow:0 0 9px rgba(255,183,79,.3)}
+.t-ch-status{border:1px solid rgba(255,209,116,.58);background:linear-gradient(130deg,rgba(87,29,120,.70),rgba(56,27,76,.80));box-shadow:0 0 20px rgba(236,154,90,.13)}
+.t-ch-status b{color:#fff4bd}
+.t-ch-phase h3{color:#fce5b2;border-color:rgba(244,185,109,.34)}
+.t-ch-fixture{background:linear-gradient(145deg,rgba(38,19,79,.93),rgba(20,13,47,.96));border:1px solid rgba(220,158,255,.43);box-shadow:0 0 15px rgba(161,78,244,.10),inset 0 0 10px rgba(249,181,93,.06)}
+.t-ch-fixture.is-complete{border-color:rgba(255,204,117,.54)}
+.t-ch-fixture.is-ready{border-color:rgba(255,218,125,.78)}
+.t-ch-fixture header strong{color:#ffe5aa}
+.t-ch-fighter{background:rgba(29,24,60,.75)}
+.t-ch-fighter.is-winner{color:#ffe8ab;border-left:2px solid #ffcb63;background:linear-gradient(90deg,rgba(205,122,50,.28),rgba(170,77,184,.11))}
+.t-ch-fighter.is-winner b{color:#ffe29a;text-shadow:0 0 10px rgba(244,186,79,.34)}
+.t-ch-bracket-scroll{scrollbar-color:rgba(244,186,105,.67) rgba(35,17,66,.65)}
+.t-ch-schedule-item.result-item,.t-ch-schedule-item.unplayed-item{border-color:rgba(244,190,114,.36);background:linear-gradient(95deg,rgba(88,45,117,.18),rgba(31,19,58,.44));box-shadow:inset 0 0 16px rgba(255,196,93,.045)}
+.t-ch-schedule-item strong,.t-ch-schedule-id{color:#ffdc93}
+.t-ch-bye-panel>span{border-color:rgba(255,209,129,.4);box-shadow:0 0 9px rgba(255,198,84,.08)}
+
+/* ===== Ambient Cosmic 2: prefer the named PNG if present; known Arena webp fallback; existing cosmictool last ===== */
+.content .stats-section.section-card::before,
+.content .overview-grid>.section-card:nth-child(2)::before{
+  background-image:url('PROGRAM-DRAFT/draft-assets/cosmic2.png'),url('PROGRAM-DRAFT/draft-assets/pack_cosmic_2.webp'),url('assets/cosmictool.png');
+  background-position:center,center,center;
+  background-size:cover,cover,cover;
+  background-repeat:no-repeat;
+  mix-blend-mode:screen;opacity:.14;
+}
+.content .overview-grid>.section-card:nth-child(2) .section-title,
+.content .stats-section .section-title{color:#fff1c7;text-shadow:0 0 13px rgba(245,198,115,.22)}
+.content .overview-grid>.section-card:nth-child(2) .result-item,
+.content .overview-grid>.section-card:nth-child(2) .unplayed-item{
+  border-color:rgba(242,192,112,.25);
+  background:linear-gradient(115deg,rgba(83,35,105,.20),rgba(21,25,62,.45));
+  box-shadow:inset 0 0 12px rgba(245,181,74,.04),0 2px 7px rgba(0,0,0,.12);
+}
+.content .overview-grid>.section-card:nth-child(2) .result-block-title{color:#ffdb9d}
+
+/* ===== 6 statistics; 4 + centered 2 on wide screens, responsive 3x2 / 2x3 ===== */
+.content .stats-section .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.content .stats-section .stat-box{min-width:0;min-height:132px;border-color:rgba(243,195,133,.28);background:linear-gradient(140deg,rgba(45,24,76,.40),rgba(11,24,58,.45));box-shadow:0 0 18px rgba(183,89,231,.08),inset 0 0 0 1px rgba(254,210,126,.035)}
+.content .stats-section .stat-box strong{color:#ffe2b8;text-shadow:0 0 12px rgba(254,183,89,.14)}
+@media(min-width:1081px){
+  .content .stats-section .stat-box:nth-child(5){grid-column:2}
+  .content .stats-section .stat-box:nth-child(6){grid-column:3}
+}
+@media(min-width:701px) and (max-width:1080px){.content .stats-section .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:431px) and (max-width:700px){.content .stats-section .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:430px){.content .stats-section .stats-grid{grid-template-columns:1fr}}
+
+/* ===== Pills / library metadata: clarity without overpowering image ===== */
+.meta-config-label,.meta-config-detail>span{
+  font-family:'Orbitron','Rajdhani',sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:.14em!important;
+  color:#ffdda2!important;
+  text-shadow:0 0 13px rgba(255,190,90,.18);
+}
+.meta-config-chip,.meta-token{
+  box-shadow:0 5px 13px rgba(0,0,0,.22),0 0 13px rgba(133,104,231,.12),inset 0 0 10px rgba(255,218,131,.035)!important;
+  border-color:rgba(199,165,252,.38)!important;
+  filter:brightness(1.07);
+}
+.meta-config-detail{box-shadow:0 8px 20px rgba(0,0,0,.12),0 0 16px rgba(139,87,225,.06)}
+.meta-config-detail--bans .meta-token{box-shadow:0 5px 13px rgba(0,0,0,.17),0 0 14px rgba(254,103,156,.12)!important}
+.meta-config-detail--lucky .meta-token{box-shadow:0 5px 13px rgba(0,0,0,.17),0 0 14px rgba(255,198,94,.15)!important}
+
+@media(max-width:720px){
+  .toolbar{width:calc(100% - 12px)!important;margin:8px auto 20px!important;padding:12px 6px!important;row-gap:12px}
+  .toolbar-left,.toolbar-right{width:100%;min-width:0}
+  .toolbar-right>*{flex:initial!important}
+  .quick-jump-control{width:min(390px,calc(100% - 108px))}
+  .toolbar-btn{padding:10px 11px}
+  .t-ch-heading h2::before{flex-basis:55px;width:55px;height:55px}
+  .t-ch-heading h2{flex-wrap:wrap}
+  .meta-config-label,.meta-config-detail>span{letter-spacing:.09em!important}
+}
+@media(prefers-reduced-motion:reduce){.toolbar-btn::before,.quick-jump-control::before{animation:none!important}}

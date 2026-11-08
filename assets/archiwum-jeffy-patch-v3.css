@@ -1,0 +1,359 @@
+/* MSP SNAPDRAFT · GWIEZDNE ARCHIWUM DANYCH · NAKLEJKI V1
+   Tylko rozmieszczenie zatwierdzonych grafik; statystyki i logika bez zmian.
+   ZERO nowych marginów i paddingów między sekcjami. */
+
+/* Naklejki poza layoutem: zawartość nadal rządzi wysokością sekcji. */
+.archive .section > .msp-archive-jeff,
+.archive .ban-archive-panel > .msp-archive-jeff {
+  display:block;
+  position:absolute;
+  z-index:18;
+  top:7px;
+  right:12px;
+  left:auto;
+  width:clamp(112px,11.2vw,154px);
+  height:auto;
+  max-height:158px;
+  object-fit:contain;
+  object-position:center top;
+  pointer-events:none;
+  user-select:none;
+  transform-origin:center;
+  filter:drop-shadow(0 0 8px rgba(84,238,255,.40)) drop-shadow(0 0 13px rgba(35,201,255,.17));
+  animation:mspArchiveStickerFloat 6s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes mspArchiveStickerFloat {
+  0%,100% {transform:translateY(0px) rotate(-.6deg)}
+  50% {transform:translateY(-5px) rotate(.6deg)}
+}
+/* Warstwy: naklejka nad ozdobami, bez zakrywania tekstu dzięki rezerwie poziomej. */
+.archive .section:has(> .msp-archive-jeff){isolation:isolate;}
+.archive .section:has(> .msp-archive-jeff) > .section-head {z-index:19;}
+.archive .section:has(> .msp-archive-jeff) > .msp-archive-jeff {z-index:25;}
+.archive .section:has(> .msp-archive-jeff) > .section-head .section-note {
+  max-width:min(40%,460px);
+  margin-right:clamp(118px,12vw,170px);
+  flex-shrink:1;
+  color:#aaf0fa;
+  text-shadow:0 0 8px rgba(0,240,255,.13);
+}
+.archive #warriors > .section-head > div:first-child {
+  padding-left:clamp(128px,12.8vw,167px);
+  min-width:0;
+}
+.archive #warriors > .msp-archive-jeff {
+  left:7px;right:auto;top:17px;
+  width:clamp(116px,11.6vw,152px);
+}
+/* Przesunięcia samych naklejek — nie zmieniają geometrii paneli */
+.archive #performances > .msp-archive-jeff{top:7px;right:8px;width:clamp(114px,11.6vw,155px);animation-delay:-.7s}
+.archive #cardsArchive > .msp-archive-jeff{top:5px;right:10px;width:clamp(115px,11.9vw,163px);animation-delay:-1.1s}
+.archive #deckArchive > .msp-archive-jeff{top:8px;right:8px;width:clamp(118px,12vw,166px);animation-delay:-1.8s}
+.archive #draftArchive > .msp-archive-jeff{top:4px;right:8px;width:clamp(115px,11.7vw,158px);animation-delay:-2.2s}
+.archive #rivalries > .msp-archive-jeff{top:5px;right:9px;width:clamp(113px,11.7vw,160px);animation-delay:-2.5s}
+.archive #trends > .msp-archive-jeff{top:6px;right:10px;width:clamp(112px,11.8vw,160px);animation-delay:-3.3s}
+.archive #timelineArchive > .msp-archive-jeff{top:3px;right:8px;width:clamp(119px,12.3vw,168px);animation-delay:-3.8s}
+.archive #curiosities > .msp-archive-jeff{top:4px;right:8px;width:clamp(115px,11.8vw,158px);animation-delay:-4.2s}
+
+/* BANY — osobna, dziesiąta grafika w panelu Rekordów Kart. */
+.archive #cardsArchive .ban-archive-panel {isolation:isolate;}
+.archive #cardsArchive .ban-archive-panel > .msp-archive-jeff--ban {
+  top:6px;right:31%;
+  width:clamp(105px,10.2vw,140px);
+  max-height:143px;
+  filter:drop-shadow(0 0 9px rgba(255,96,146,.26)) drop-shadow(0 0 11px rgba(68,220,255,.24));
+  animation-delay:-2.7s;
+}
+.archive #cardsArchive .ban-archive-panel > .ban-archive-head {position:relative;z-index:20;}
+.archive #cardsArchive .ban-archive-head > div:first-child {min-width:0;max-width:49%;}
+.archive #cardsArchive .ban-archive-head > .permanent-ban-note {flex:0 0 auto;max-width:27%;}
+
+/* Mniejsze ekrany: każdy opis po lewej, a Jeff w swoim wolnym rogu. */
+@media(max-width:900px) {
+  .archive .section:has(> .msp-archive-jeff) > .section-head > div:first-child{max-width:calc(100% - 116px);}
+  .archive .section:has(> .msp-archive-jeff) > .section-head .section-note {
+    max-width:calc(100% - 116px);
+    width:calc(100% - 116px);
+    margin:0;
+    text-align:left;
+  }
+  .archive #warriors > .section-head > div:first-child{max-width:100%;padding-left:123px;}
+  .archive #warriors > .msp-archive-jeff{left:9px;top:8px;width:111px;}
+  .archive #cardsArchive .ban-archive-panel > .msp-archive-jeff--ban{right:29%;width:112px;}
+  .archive #cardsArchive .ban-archive-head > div:first-child{max-width:50%;}
+}
+@media(max-width:620px) {
+  .archive .section > .msp-archive-jeff{width:93px!important;max-height:102px!important;top:8px!important;right:3px!important;}
+  .archive .section:has(> .msp-archive-jeff) > .section-head > div:first-child{max-width:calc(100% - 97px);}
+  .archive .section:has(> .msp-archive-jeff) > .section-head .section-note{
+    width:calc(100% - 97px);
+    max-width:calc(100% - 97px);
+    font-size:13px;
+  }
+  .archive #warriors > .msp-archive-jeff {left:2px!important;right:auto!important;top:8px!important;width:92px!important;}
+  .archive #warriors > .section-head > div:first-child{padding-left:94px;max-width:100%;}
+  .archive #cardsArchive .ban-archive-panel > .msp-archive-jeff--ban {top:3px;right:0;width:92px;max-height:96px;}
+  .archive #cardsArchive .ban-archive-panel > .ban-archive-head {
+    display:flex!important;flex-direction:column;align-items:flex-start!important;gap:9px;
+  }
+  .archive #cardsArchive .ban-archive-head > div:first-child{max-width:calc(100% - 94px);}
+  .archive #cardsArchive .ban-archive-head > .permanent-ban-note{max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce){
+ .archive .section > .msp-archive-jeff,
+ .archive .ban-archive-panel > .msp-archive-jeff{animation:none!important;will-change:auto;}
+}
+
+
+/* ===== GWIEZDNE ARCHIWUM PATCH V2 ===== */
+/* większe i czytelniejsze dopiski sekcji */
+.archive .section-kicker{font-size:12px;letter-spacing:.19em;text-shadow:0 0 10px rgba(0,240,255,.18)}
+.archive .section-note{font-size:16px;line-height:1.4;color:#b9edf8;text-shadow:0 0 10px rgba(0,240,255,.08)}
+@media(max-width:620px){.archive .section-kicker{font-size:11px;letter-spacing:.15em}.archive .section-note{font-size:14px}}
+
+/* REKORDY KART — główna naklejka delikatnie niżej i większa */
+.archive #cardsArchive>.msp-archive-jeff{top:18px;right:10px;width:clamp(124px,13vw,184px);max-height:184px}
+
+/* TOP KARTY WSZECHŚWIATA — osobna naklejka */
+.card-toplists-panel{position:relative;overflow:hidden}
+.card-toplists-panel>.msp-archive-jeff--topcards{display:block;position:absolute;z-index:25;top:-6px;right:10px;width:clamp(134px,13vw,184px);height:auto;pointer-events:none;user-select:none;filter:drop-shadow(0 0 9px rgba(84,238,255,.36)) drop-shadow(0 0 15px rgba(255,214,107,.22));animation:mspArchiveStickerFloat 6.4s ease-in-out infinite;transform-origin:center}
+.card-toplists-panel .card-toplists-head>div:first-child{max-width:min(56%,640px)}
+.card-toplists-panel .card-toplists-head p{max-width:min(44%,560px);margin-right:clamp(120px,13vw,194px)}
+@media(max-width:900px){.card-toplists-panel>.msp-archive-jeff--topcards{width:118px;top:4px;right:4px}.card-toplists-panel .card-toplists-head p{max-width:calc(100% - 124px);margin-right:124px}}
+@media(max-width:620px){.card-toplists-panel>.msp-archive-jeff--topcards{width:96px;top:8px;right:2px}.card-toplists-panel .card-toplists-head p{max-width:calc(100% - 102px);margin-right:102px}}
+
+/* subtelna, wielokolorowa telemetria w Top Kartach */
+#deckShowcases .stat-deck:nth-child(1) .mini-stat-card::before,
+#deckShowcases .stat-deck:nth-child(2) .mini-stat-card::before,
+#deckShowcases .stat-deck:nth-child(3) .mini-stat-card::before{opacity:.19!important}
+#deckShowcases .stat-deck:nth-child(1) .mini-stat-card::after{background:linear-gradient(155deg,rgba(187,82,255,.78),rgba(23,43,104,.88) 55%,rgba(11,16,45,.97))!important}
+#deckShowcases .stat-deck:nth-child(2) .mini-stat-card::after{background:linear-gradient(155deg,rgba(255,201,84,.78),rgba(69,54,16,.9) 55%,rgba(16,15,28,.97))!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-stat-card::after{background:linear-gradient(155deg,rgba(78,243,194,.72),rgba(16,61,70,.88) 55%,rgba(10,17,35,.97))!important}
+#deckShowcases .stat-deck:nth-child(3) h4{color:#8effd8!important;text-shadow:0 0 15px rgba(78,243,194,.45)!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-stat-card{border:2px solid rgba(78,243,194,.55)!important;box-shadow:0 0 16px rgba(78,243,194,.18), inset 0 0 25px rgba(78,243,194,.16)!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-stat-card:hover{border-color:rgba(78,243,194,.94)!important;box-shadow:0 0 24px rgba(78,243,194,.34), inset 0 0 36px rgba(78,243,194,.25)!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-rank{border:1px solid rgba(78,243,194,.8)!important;color:#fff!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-card-name{color:#beffef!important;text-shadow:0 0 10px rgba(78,243,194,.38)!important}
+#deckShowcases .stat-deck:nth-child(3) .mini-card-stat{color:#95ffe0!important;text-shadow:0 0 10px rgba(78,243,194,.42)!important}
+
+/* GALAKTYCZNE DNA — Jeff bliżej tytułu, opis po prawej */
+.archive #deckArchive>.msp-archive-jeff{top:3px;right:34%;width:clamp(122px,12.6vw,176px);max-height:178px}
+.archive #deckArchive>.section-head>div:first-child{max-width:min(47%,620px)}
+.archive #deckArchive>.section-head .section-note{max-width:min(31%,360px);margin-right:0}
+
+/* REKORDY DRAFTÓW — lekko większa naklejka */
+.archive #draftArchive>.msp-archive-jeff{top:3px;right:12px;width:clamp(124px,12.8vw,176px);max-height:176px}
+
+/* RYWALIZACJE — Jeff bardziej po środku, opis po prawej, ogniowy akcent */
+#rivalries{--section-border:rgba(255,136,67,.24);--section-glow:rgba(255,118,49,.13);--section-glow-2:rgba(255,214,107,.09)}
+#rivalries::before{background:radial-gradient(circle at 10% 0,rgba(255,118,49,.15),transparent 24%),radial-gradient(circle at 92% 100%,rgba(255,214,107,.1),transparent 26%),radial-gradient(circle at 50% 115%,rgba(255,94,58,.14),transparent 24%),radial-gradient(circle at 20% 108%,rgba(255,184,69,.12),transparent 22%),radial-gradient(circle at 80% 109%,rgba(255,84,84,.12),transparent 22%),linear-gradient(180deg,transparent 70%,rgba(255,74,34,.05) 100%),linear-gradient(120deg,transparent 0 70%,rgba(255,255,255,.03) 70.35%,transparent 71%)}
+.archive #rivalries>.msp-archive-jeff{top:4px;right:31%;width:clamp(122px,12.6vw,174px);max-height:174px}
+.archive #rivalries>.section-head>div:first-child{max-width:min(44%,520px)}
+.archive #rivalries>.section-head .section-note{max-width:min(32%,370px);margin-right:0}
+#rivalries .versus-row:nth-child(4n+1){border-color:rgba(0,240,255,.23);background:linear-gradient(90deg,rgba(0,240,255,.08),rgba(139,43,226,.09),rgba(255,73,215,.06))}
+#rivalries .versus-row:nth-child(4n+2){border-color:rgba(255,214,107,.22);background:linear-gradient(90deg,rgba(255,214,107,.08),rgba(255,118,49,.08),rgba(255,73,123,.05))}
+#rivalries .versus-row:nth-child(4n+3){border-color:rgba(78,243,194,.2);background:linear-gradient(90deg,rgba(78,243,194,.07),rgba(0,154,255,.08),rgba(153,92,255,.06))}
+#rivalries .versus-row:nth-child(4n+4){border-color:rgba(255,123,196,.22);background:linear-gradient(90deg,rgba(255,123,196,.07),rgba(154,96,255,.08),rgba(0,240,255,.05))}
+#rivalries .rivalry-readout{border-color:rgba(255,149,84,.2);box-shadow:0 18px 55px rgba(0,0,0,.28), inset 0 0 28px rgba(255,118,49,.035)}
+
+/* TRENDY — naklejka w klimacie pokazu mody, trochę wyżej */
+.archive #trends>.msp-archive-jeff{top:0;right:8px;width:clamp(118px,12.3vw,170px)}
+
+/* HISTORIA DRAFTÓW — Jeff zaraz po tytule, potem opis */
+.archive #timelineArchive>.msp-archive-jeff{top:2px;right:35%;width:clamp(126px,12.9vw,182px);max-height:182px}
+.archive #timelineArchive>.section-head>div:first-child{max-width:min(46%,560px)}
+.archive #timelineArchive>.section-head .section-note{max-width:min(30%,340px);margin-right:0}
+
+/* CIEKAWOSTKI — lekko w lewo i większa naklejka */
+.archive #curiosities>.msp-archive-jeff{top:1px;right:14%;width:clamp(124px,12.8vw,180px);max-height:180px}
+.archive #curiosities>.section-head>div:first-child{max-width:min(45%,560px)}
+.archive #curiosities>.section-head .section-note{max-width:min(34%,380px);margin-right:0}
+
+/* różnorodniejsze kolory grup rekordów draftów */
+#draftArchive .draft-record-group:nth-child(4n+1){border-color:rgba(255,214,107,.18);background:linear-gradient(145deg,rgba(255,214,107,.07),rgba(10,14,38,.54));box-shadow:inset 0 0 26px rgba(255,214,107,.03)}
+#draftArchive .draft-record-group:nth-child(4n+2){border-color:rgba(255,109,187,.18);background:linear-gradient(145deg,rgba(255,109,187,.06),rgba(12,11,40,.54));box-shadow:inset 0 0 26px rgba(255,109,187,.03)}
+#draftArchive .draft-record-group:nth-child(4n+3){border-color:rgba(82,247,197,.18);background:linear-gradient(145deg,rgba(82,247,197,.06),rgba(7,18,36,.54));box-shadow:inset 0 0 26px rgba(82,247,197,.03)}
+#draftArchive .draft-record-group:nth-child(4n+4){border-color:rgba(113,180,255,.18);background:linear-gradient(145deg,rgba(113,180,255,.06),rgba(8,13,35,.54));box-shadow:inset 0 0 26px rgba(113,180,255,.03)}
+#draftArchive .draft-record-group:nth-child(4n+1) .draft-record-group-head span{color:#e4cd85}
+#draftArchive .draft-record-group:nth-child(4n+2) .draft-record-group-head span{color:#ffc2df}
+#draftArchive .draft-record-group:nth-child(4n+3) .draft-record-group-head span{color:#bfffe5}
+#draftArchive .draft-record-group:nth-child(4n+4) .draft-record-group-head span{color:#b9dfff}
+#draftArchive .draft-record-group .record-cell:nth-child(4n+1){background:linear-gradient(145deg,rgba(255,214,107,.09),rgba(9,15,38,.78))}
+#draftArchive .draft-record-group .record-cell:nth-child(4n+2){background:linear-gradient(145deg,rgba(255,98,177,.09),rgba(9,13,38,.78))}
+#draftArchive .draft-record-group .record-cell:nth-child(4n+3){background:linear-gradient(145deg,rgba(82,247,197,.08),rgba(8,16,36,.78))}
+#draftArchive .draft-record-group .record-cell:nth-child(4n+4){background:linear-gradient(145deg,rgba(113,180,255,.08),rgba(7,13,35,.78))}
+
+/* historia draftów: każdy skan z innym subtelnym gradientem */
+#timelineArchive .timeline-card:nth-child(5n+1){border:1px solid rgba(255,214,107,.22);background:linear-gradient(145deg,rgba(255,214,107,.08),rgba(4,15,36,.86),rgba(7,9,29,.82))}
+#timelineArchive .timeline-card:nth-child(5n+2){border:1px solid rgba(255,115,197,.2);background:linear-gradient(145deg,rgba(255,115,197,.07),rgba(4,15,36,.86),rgba(7,9,29,.82))}
+#timelineArchive .timeline-card:nth-child(5n+3){border:1px solid rgba(82,247,197,.2);background:linear-gradient(145deg,rgba(82,247,197,.07),rgba(4,15,36,.86),rgba(7,9,29,.82))}
+#timelineArchive .timeline-card:nth-child(5n+4){border:1px solid rgba(115,210,255,.2);background:linear-gradient(145deg,rgba(115,210,255,.07),rgba(4,15,36,.86),rgba(7,9,29,.82))}
+#timelineArchive .timeline-card:nth-child(5n+5){border:1px solid rgba(184,113,255,.2);background:linear-gradient(145deg,rgba(184,113,255,.07),rgba(4,15,36,.86),rgba(7,9,29,.82))}
+#timelineArchive .timeline-card:nth-child(5n+1) .timeline-meta span{background:rgba(255,214,107,.09);color:#f0ddb0}
+#timelineArchive .timeline-card:nth-child(5n+2) .timeline-meta span{background:rgba(255,115,197,.09);color:#ffd0ea}
+#timelineArchive .timeline-card:nth-child(5n+3) .timeline-meta span{background:rgba(82,247,197,.09);color:#d6fff0}
+#timelineArchive .timeline-card:nth-child(5n+4) .timeline-meta span{background:rgba(115,210,255,.09);color:#d3eeff}
+#timelineArchive .timeline-card:nth-child(5n+5) .timeline-meta span{background:rgba(184,113,255,.09);color:#ead6ff}
+
+@media(max-width:1100px){
+  .archive #deckArchive>.msp-archive-jeff{right:19%}
+  .archive #rivalries>.msp-archive-jeff{right:18%}
+  .archive #timelineArchive>.msp-archive-jeff{right:18%}
+  .archive #curiosities>.msp-archive-jeff{right:8%}
+  .archive #deckArchive>.section-head>div:first-child,
+  .archive #rivalries>.section-head>div:first-child,
+  .archive #timelineArchive>.section-head>div:first-child,
+  .archive #curiosities>.section-head>div:first-child{max-width:calc(100% - 190px)}
+  .archive #deckArchive>.section-head .section-note,
+  .archive #rivalries>.section-head .section-note,
+  .archive #timelineArchive>.section-head .section-note,
+  .archive #curiosities>.section-head .section-note{max-width:calc(100% - 190px)}
+}
+@media(max-width:620px){
+  .archive #cardsArchive>.msp-archive-jeff,
+  .archive #deckArchive>.msp-archive-jeff,
+  .archive #draftArchive>.msp-archive-jeff,
+  .archive #rivalries>.msp-archive-jeff,
+  .archive #timelineArchive>.msp-archive-jeff,
+  .archive #curiosities>.msp-archive-jeff{width:98px!important;max-height:108px!important;right:2px!important;top:8px!important}
+  .archive #warriors>.section-head>div:first-child,
+  .archive #performances>.section-head>div:first-child,
+  .archive #cardsArchive>.section-head>div:first-child,
+  .archive #deckArchive>.section-head>div:first-child,
+  .archive #draftArchive>.section-head>div:first-child,
+  .archive #rivalries>.section-head>div:first-child,
+  .archive #trends>.section-head>div:first-child,
+  .archive #timelineArchive>.section-head>div:first-child,
+  .archive #curiosities>.section-head>div:first-child{max-width:calc(100% - 102px)!important;padding-left:0!important}
+  .archive #deckArchive>.section-head .section-note,
+  .archive #rivalries>.section-head .section-note,
+  .archive #timelineArchive>.section-head .section-note,
+  .archive #curiosities>.section-head .section-note{max-width:calc(100% - 102px)!important}
+}
+
+
+/* ===== GWIEZDNE ARCHIWUM PATCH V3 ===== */
+
+/* REKORDY WOJOWNIKÓW — większa i niżej */
+.archive #warriors > .msp-archive-jeff{
+  left:10px;
+  right:auto;
+  top:26px;
+  width:clamp(128px,13.2vw,182px);
+  max-height:184px;
+}
+.archive #warriors > .section-head > div:first-child{padding-left:clamp(140px,14vw,194px)}
+
+/* GÓRNE LICZNIKI — różne gradienty + delikatny matrix */
+.counters .counter{
+  border:1px solid var(--counter-border, rgba(99,235,255,.18));
+  box-shadow:inset 0 0 26px rgba(0,240,255,.04), 0 10px 26px rgba(0,0,0,.18);
+}
+.counters .counter::before{
+  background:
+    linear-gradient(135deg,transparent 0 60%,rgba(255,255,255,.05) 60.5%,transparent 61%),
+    repeating-linear-gradient(180deg, transparent 0 18px, rgba(0,240,255,.04) 18px 19px, transparent 19px 38px),
+    repeating-linear-gradient(90deg, transparent 0 54px, rgba(0,240,255,.032) 54px 55px, transparent 55px 110px),
+    radial-gradient(circle at 80% 18%, rgba(255,255,255,.05), transparent 22%);
+  opacity:.9;
+  background-size:auto, auto, auto, auto;
+  animation: counterMatrixDrift 16s linear infinite;
+}
+.counters .counter::after{height:3px; opacity:.95}
+@keyframes counterMatrixDrift{
+  from{background-position:0 0, 0 0, 0 0, 0 0}
+  to{background-position:0 0, 0 34px, 40px 0, 0 0}
+}
+.counters .counter:nth-child(8n+1){--counter-border:rgba(119,229,255,.26);background:linear-gradient(150deg,rgba(11,47,84,.90),rgba(7,25,58,.82)), radial-gradient(circle at 85% 15%,rgba(0,240,255,.13),transparent 26%)}
+.counters .counter:nth-child(8n+1)::after{background:linear-gradient(90deg,transparent,#69f3ff,transparent)}
+.counters .counter:nth-child(8n+2){--counter-border:rgba(196,115,255,.26);background:linear-gradient(150deg,rgba(41,20,84,.90),rgba(16,12,47,.82)), radial-gradient(circle at 85% 15%,rgba(199,111,255,.15),transparent 26%)}
+.counters .counter:nth-child(8n+2)::after{background:linear-gradient(90deg,transparent,#d484ff,transparent)}
+.counters .counter:nth-child(8n+3){--counter-border:rgba(255,199,97,.26);background:linear-gradient(150deg,rgba(79,49,12,.90),rgba(33,21,9,.82)), radial-gradient(circle at 85% 15%,rgba(255,214,107,.16),transparent 26%)}
+.counters .counter:nth-child(8n+3)::after{background:linear-gradient(90deg,transparent,#ffd66b,transparent)}
+.counters .counter:nth-child(8n+4){--counter-border:rgba(103,247,199,.26);background:linear-gradient(150deg,rgba(8,57,56,.90),rgba(8,26,35,.82)), radial-gradient(circle at 85% 15%,rgba(78,243,194,.14),transparent 26%)}
+.counters .counter:nth-child(8n+4)::after{background:linear-gradient(90deg,transparent,#66ffd6,transparent)}
+.counters .counter:nth-child(8n+5){--counter-border:rgba(255,128,204,.25);background:linear-gradient(150deg,rgba(68,18,54,.90),rgba(31,11,30,.82)), radial-gradient(circle at 85% 15%,rgba(255,115,197,.14),transparent 26%)}
+.counters .counter:nth-child(8n+5)::after{background:linear-gradient(90deg,transparent,#ff87d2,transparent)}
+.counters .counter:nth-child(8n+6){--counter-border:rgba(118,171,255,.25);background:linear-gradient(150deg,rgba(17,34,82,.90),rgba(8,15,47,.82)), radial-gradient(circle at 85% 15%,rgba(115,210,255,.14),transparent 26%)}
+.counters .counter:nth-child(8n+6)::after{background:linear-gradient(90deg,transparent,#88ccff,transparent)}
+.counters .counter:nth-child(8n+7){--counter-border:rgba(255,149,104,.26);background:linear-gradient(150deg,rgba(81,32,15,.90),rgba(35,15,10,.82)), radial-gradient(circle at 85% 15%,rgba(255,149,104,.15),transparent 26%)}
+.counters .counter:nth-child(8n+7)::after{background:linear-gradient(90deg,transparent,#ffab70,transparent)}
+.counters .counter:nth-child(8n+8){--counter-border:rgba(181,118,255,.25);background:linear-gradient(150deg,rgba(43,20,78,.90),rgba(16,10,42,.82)), radial-gradient(circle at 85% 15%,rgba(181,118,255,.15),transparent 26%)}
+.counters .counter:nth-child(8n+8)::after{background:linear-gradient(90deg,transparent,#bb8eff,transparent)}
+
+/* REKORDY KART — Jeff nad strefą skanowania, karta niżej, napis tuż nad kartą */
+.archive #cardsArchive>.msp-archive-jeff{
+  top:62px;
+  left:14%;
+  right:auto;
+  width:clamp(136px,14vw,192px);
+  max-height:192px;
+  z-index:29;
+}
+.archive #cardsArchive>.section-head .section-note{margin-right:0;max-width:min(48%,560px)}
+#cardHoloContainer{min-height:310px!important}
+.stats-holo-container{justify-content:flex-start}
+.stats-holo-card{
+  top:auto;
+  margin-top:56px;
+  animation: floatCardV3 4.2s ease-in-out infinite;
+}
+@keyframes floatCardV3{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.stats-holo-plinth{bottom:10%;}
+.stats-holo-text.top{
+  top:calc(50% - 112px);
+  letter-spacing:.24em;
+}
+.stats-holo-text.bottom{bottom:12%}
+
+/* TOP KARTY WSZECHŚWIATA — naklejka na wierzchu + ozdobniki między kaflami */
+.card-toplists-panel{overflow:visible!important}
+.card-toplists-panel>.msp-archive-jeff--topcards{
+  top:-22px;
+  right:10px;
+  z-index:60;
+}
+#deckShowcases{position:relative;overflow:visible}
+#deckShowcases::before{
+  content:"✦   ❦   ✦   ❦   ✦";
+  position:absolute;
+  left:9%;
+  right:9%;
+  top:-6px;
+  text-align:center;
+  font-size:22px;
+  letter-spacing:1.05em;
+  color:rgba(255,218,131,.16);
+  text-shadow:0 0 10px rgba(255,218,131,.11),0 0 16px rgba(0,240,255,.08);
+  pointer-events:none;
+  z-index:0;
+}
+#deckShowcases>*{position:relative;z-index:1}
+
+/* GALAKTYCZNE DRAFTY / HISTORIA DRAFTÓW / CIEKAWOSTKI — drobne korekty już z V2, tu bez zmian układu */
+
+/* mobilka dla nowych pozycji */
+@media(max-width:1100px){
+  .archive #cardsArchive>.msp-archive-jeff{left:10%; top:68px}
+}
+@media(max-width:900px){
+  .archive #warriors > .msp-archive-jeff{left:9px;top:18px;width:124px;max-height:132px}
+  .archive #warriors > .section-head > div:first-child{padding-left:132px}
+  .archive #cardsArchive>.msp-archive-jeff{left:8px;top:56px;width:116px;max-height:122px}
+  .archive #cardsArchive>.section-head>div:first-child{max-width:100%}
+  .archive #cardsArchive>.section-head .section-note{max-width:100%;width:100%}
+  .card-toplists-panel>.msp-archive-jeff--topcards{top:-12px;right:4px}
+  #deckShowcases::before{font-size:18px;letter-spacing:.55em;left:4%;right:4%;top:0}
+}
+@media(max-width:620px){
+  .archive #warriors > .msp-archive-jeff{left:2px!important;top:14px!important;width:103px!important;max-height:111px!important}
+  .archive #warriors > .section-head > div:first-child{padding-left:100px;max-width:100%}
+  .archive #cardsArchive>.msp-archive-jeff{left:2px!important;top:64px!important;right:auto!important;width:98px!important;max-height:104px!important}
+  #cardHoloContainer{min-height:284px!important}
+  .stats-holo-card{margin-top:62px; width:154px}
+  .stats-holo-text.top{top:calc(50% - 104px); letter-spacing:.14em; font-size:9px}
+  .card-toplists-panel>.msp-archive-jeff--topcards{width:106px;top:-10px;right:2px}
+  .card-toplists-panel .card-toplists-head p{max-width:calc(100% - 112px);margin-right:112px}
+  #deckShowcases::before{font-size:15px;letter-spacing:.35em;left:2%;right:2%;top:8px}
+}

@@ -1,0 +1,123 @@
+/* ============================================================
+   PLAYER 04 — DNA WOJOWNIKA
+   Laboratory / taxonomy visual family shared with Galactic DNA.
+============================================================ */
+.section-warrior-dna{
+  --dna-teal:#3fffd0;
+  --dna-cyan:#4bdcff;
+  --dna-green:#65ff9b;
+  --dna-violet:#b06cff;
+  --dna-rose:#ff668f;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:30px!important;
+  border-color:rgba(79,245,210,.27)!important;
+  background:
+    radial-gradient(circle at 14% 10%,rgba(52,255,199,.14),transparent 27%),
+    radial-gradient(circle at 80% 16%,rgba(63,205,255,.12),transparent 27%),
+    radial-gradient(circle at 82% 86%,rgba(154,84,255,.12),transparent 30%),
+    linear-gradient(145deg,rgba(2,23,31,.93),rgba(3,16,31,.94) 46%,rgba(10,11,37,.93))!important;
+  box-shadow:
+    0 0 34px rgba(48,255,202,.09),
+    0 0 76px rgba(37,155,255,.055),
+    inset 0 0 58px rgba(64,255,203,.035)!important;
+}
+.section-warrior-dna::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+  opacity:.68;
+  background:
+    repeating-linear-gradient(0deg,rgba(105,255,223,.027) 0 1px,transparent 1px 35px),
+    repeating-linear-gradient(90deg,rgba(105,255,223,.021) 0 1px,transparent 1px 35px),
+    linear-gradient(112deg,transparent 0 38%,rgba(129,255,226,.045) 49%,transparent 61%);
+  background-size:auto,auto,240% 100%;
+  animation:warriorDnaGridSweep 13s ease-in-out infinite;
+}
+.section-warrior-dna::after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:-35%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 21% 42%,rgba(83,255,186,.11),transparent 18%),
+    radial-gradient(circle at 68% 28%,rgba(63,191,255,.08),transparent 16%),
+    radial-gradient(circle at 58% 72%,rgba(185,79,255,.085),transparent 17%),
+    radial-gradient(circle at 86% 64%,rgba(255,78,121,.055),transparent 14%);
+  animation:warriorDnaNebula 18s ease-in-out infinite alternate;
+}
+@keyframes warriorDnaGridSweep{0%,45%{background-position:0 0,0 0,-160% 0}75%,100%{background-position:0 0,0 0,150% 0}}
+@keyframes warriorDnaNebula{from{transform:translate3d(-1.5%,1%,0) scale(1)}to{transform:translate3d(2%,-1.5%,0) scale(1.035)}}
+
+.warrior-dna-ambient{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.warrior-dna-helix{position:absolute;width:128px;height:360px;overflow:visible;opacity:.23;filter:drop-shadow(0 0 9px rgba(64,255,205,.48)) drop-shadow(0 0 20px rgba(71,203,255,.22));transform-origin:50% 50%}
+.warrior-dna-helix path{fill:none;stroke-width:3.2;stroke-linecap:round}
+.warrior-dna-helix .strand-a{stroke:#57ffd0}
+.warrior-dna-helix .strand-b{stroke:#4fcfff}
+.warrior-dna-helix line{stroke:rgba(179,255,235,.62);stroke-width:1.45}
+.warrior-dna-helix.dna-a{left:2%;top:8%;transform:rotate(-13deg);animation:dnaFloatA 10s ease-in-out infinite alternate}
+.warrior-dna-helix.dna-b{right:3%;top:22%;opacity:.17;transform:rotate(16deg) scale(.82);animation:dnaFloatB 13s ease-in-out infinite alternate}
+.warrior-dna-helix.dna-c{left:44%;bottom:-165px;opacity:.115;transform:rotate(88deg) scale(1.05);animation:dnaFloatC 15s ease-in-out infinite alternate}
+@keyframes dnaFloatA{from{transform:translate3d(0,0,0) rotate(-13deg)}to{transform:translate3d(12px,-20px,0) rotate(-8deg)}}
+@keyframes dnaFloatB{from{transform:translate3d(0,0,0) rotate(16deg) scale(.82)}to{transform:translate3d(-10px,24px,0) rotate(11deg) scale(.88)}}
+@keyframes dnaFloatC{from{transform:translate3d(-8px,0,0) rotate(88deg) scale(1.05)}to{transform:translate3d(18px,-8px,0) rotate(94deg) scale(1.10)}}
+
+.warrior-dna-particles{position:absolute;inset:0;pointer-events:none}
+.warrior-dna-particles i{position:absolute;width:4px;height:4px;border-radius:50%;background:#7affd5;box-shadow:0 0 8px #6fffd3,0 0 18px rgba(74,215,255,.65);opacity:.32;animation:dnaParticle 8s ease-in-out infinite alternate}
+.warrior-dna-particles i:nth-child(1){left:8%;top:22%;animation-delay:-1s}.warrior-dna-particles i:nth-child(2){left:19%;top:72%;width:3px;height:3px;animation-delay:-3s}.warrior-dna-particles i:nth-child(3){left:43%;top:16%;background:#6ed9ff;animation-delay:-5s}.warrior-dna-particles i:nth-child(4){left:57%;top:84%;width:5px;height:5px;animation-delay:-2s}.warrior-dna-particles i:nth-child(5){left:78%;top:12%;background:#b079ff;animation-delay:-6s}.warrior-dna-particles i:nth-child(6){left:90%;top:62%;background:#72ffd4;animation-delay:-4s}.warrior-dna-particles i:nth-child(7){left:68%;top:45%;width:3px;height:3px;animation-delay:-7s}.warrior-dna-particles i:nth-child(8){left:32%;top:50%;background:#5ed9ff;animation-delay:-2.7s}
+@keyframes dnaParticle{from{transform:translate3d(0,10px,0) scale(.75);opacity:.18}to{transform:translate3d(8px,-18px,0) scale(1.45);opacity:.68}}
+
+.section-warrior-dna .profile-section-head{position:relative;z-index:2;border-bottom-color:rgba(82,255,210,.16)}
+.section-warrior-dna .profile-section-head p{max-width:650px;color:#93c7c7;font-size:13px}
+.warrior-dna-titleline{display:flex;align-items:center;gap:12px}
+.warrior-dna-seal{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(83,255,210,.35);background:linear-gradient(145deg,rgba(45,255,195,.10),rgba(58,171,255,.08));color:#8affdc;font:900 18px/1 Orbitron,sans-serif;box-shadow:0 0 18px rgba(62,255,204,.15),inset 0 0 16px rgba(76,225,255,.06)}
+.section-warrior-dna .section-title{font-size:clamp(24px,2.45vw,36px);text-shadow:0 0 18px rgba(69,255,204,.22),0 0 28px rgba(80,190,255,.12)}
+.section-warrior-dna .kicker{color:#6dffca;text-shadow:0 0 12px rgba(64,255,204,.34)}
+
+.warrior-dna-summary{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 17px}
+.warrior-dna-summary .dna-summary-chip{min-height:66px;padding:12px 14px;border:1px solid rgba(80,244,210,.17);border-radius:15px;background:linear-gradient(145deg,rgba(5,33,38,.72),rgba(6,17,38,.72));box-shadow:inset 0 0 20px rgba(60,255,208,.025)}
+.dna-summary-chip span{display:block;color:#78aea9;font:800 9px Orbitron,sans-serif;letter-spacing:.10em;text-transform:uppercase}
+.dna-summary-chip b{display:block;margin-top:6px;color:#f1ffff;font:900 17px Orbitron,sans-serif;text-shadow:0 0 10px rgba(78,238,255,.16)}
+
+.warrior-dna-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+.warrior-dna-panel{position:relative;overflow:hidden;min-width:0;padding:18px;border:1px solid rgba(94,237,218,.16);border-radius:19px;background:linear-gradient(150deg,rgba(4,26,35,.79),rgba(6,14,36,.78));box-shadow:inset 0 0 24px rgba(64,255,208,.022),0 0 20px rgba(0,0,0,.12)}
+.warrior-dna-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,var(--panel-glow,rgba(55,220,255,.10)),transparent 38%);opacity:.95}
+.warrior-dna-panel.selection{--panel-glow:rgba(58,191,255,.15)}
+.warrior-dna-panel.built{--panel-glow:rgba(63,255,183,.13)}
+.warrior-dna-panel.success{--panel-glow:rgba(255,100,128,.105)}
+.warrior-dna-panel.records{--panel-glow:rgba(184,97,255,.14)}
+.warrior-dna-panel.galaxy{--panel-glow:rgba(74,215,255,.12);grid-column:1/-1}
+.dna-panel-head{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:13px;padding-bottom:11px;border-bottom:1px solid rgba(104,239,219,.10)}
+.dna-panel-head h3{margin:0;color:#f1ffff;font:900 16px/1.1 Orbitron,sans-serif;letter-spacing:.035em;text-transform:uppercase}
+.dna-panel-head p{max-width:430px;margin:4px 0 0;color:#769fa2;font-size:11px;line-height:1.35;font-weight:700}
+.dna-panel-mark{flex:0 0 auto;width:31px;height:31px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(101,255,216,.22);background:rgba(14,40,47,.72);color:#7bffda;font:900 14px Orbitron,sans-serif;box-shadow:0 0 14px rgba(79,255,208,.09)}
+
+.dna-category-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.dna-category-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dna-category{min-width:0;padding:12px;border:1px solid color-mix(in srgb,var(--tag-color,#55dfff) 27%,transparent);border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--tag-color,#55dfff) 7%,rgba(4,14,31,.84)),rgba(4,12,30,.74));box-shadow:inset 0 0 16px color-mix(in srgb,var(--tag-color,#55dfff) 5%,transparent)}
+.dna-category-title{display:flex;align-items:center;gap:8px;margin-bottom:9px;color:color-mix(in srgb,var(--tag-color,#55dfff) 75%,white);font:900 10px Orbitron,sans-serif;letter-spacing:.055em;text-transform:uppercase}
+.dna-category-glyph{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--tag-color,#55dfff) 38%,transparent);background:color-mix(in srgb,var(--tag-color,#55dfff) 10%,rgba(3,10,27,.9));font-size:12px;box-shadow:0 0 12px color-mix(in srgb,var(--tag-color,#55dfff) 12%,transparent)}
+.dna-tag-list{display:grid;gap:7px}
+.dna-tag-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 10px;border-radius:11px;border:1px solid rgba(255,255,255,.045);background:rgba(2,9,25,.48);overflow:hidden}
+.dna-tag-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--row-color,#55dfff);box-shadow:0 0 9px var(--row-color,#55dfff)}
+.dna-tag-main{min-width:0;padding-left:3px}.dna-tag-name{display:flex;align-items:center;gap:7px;color:#edfefe;font-weight:900;font-size:12px;line-height:1.05}.dna-tag-name .mini-glyph{color:var(--row-color,#55dfff);font:900 10px Orbitron,sans-serif;text-shadow:0 0 8px color-mix(in srgb,var(--row-color,#55dfff) 45%,transparent)}
+.dna-tag-meta{margin-top:4px;color:#6f999c;font-size:10px;font-weight:700;line-height:1.15}.dna-tag-value{text-align:right;color:#dffeff;font:900 11px Orbitron,sans-serif;white-space:nowrap}.dna-tag-value small{display:block;margin-top:3px;color:#6e9a9d;font:800 8px Rajdhani,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.dna-empty{padding:14px;border:1px dashed rgba(94,237,218,.13);border-radius:12px;color:#789fa2;text-align:center;font-size:11px}
+
+.dna-record-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dna-record-card{position:relative;min-height:132px;padding:16px;border-radius:16px;border:1px solid rgba(182,107,255,.20);background:linear-gradient(145deg,rgba(42,18,64,.38),rgba(3,18,34,.75));overflow:hidden}
+.dna-record-card::after{content:"";position:absolute;right:-24px;bottom:-29px;width:110px;height:110px;border:1px solid rgba(189,113,255,.11);border-radius:50%;box-shadow:0 0 0 18px rgba(98,246,222,.025),0 0 0 38px rgba(125,89,255,.025)}
+.dna-record-card span{position:relative;z-index:1;color:#9d8aba;font:900 9px Orbitron,sans-serif;letter-spacing:.08em;text-transform:uppercase}.dna-record-card strong{position:relative;z-index:1;display:block;margin:9px 0 5px;color:#fff;font:900 19px/1.05 Orbitron,sans-serif}.dna-record-card b{position:relative;z-index:1;display:block;color:#85ffda;font:900 13px Orbitron,sans-serif}.dna-record-card small{position:relative;z-index:1;display:block;margin-top:7px;color:#779b9f;font-size:10px}
+
+.dna-galaxy-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dna-galaxy-card{padding:14px;border:1px solid rgba(81,226,240,.14);border-radius:15px;background:linear-gradient(145deg,rgba(6,30,39,.60),rgba(14,10,38,.60))}
+.dna-galaxy-card .galaxy-label{display:flex;align-items:center;gap:8px;color:#eaffff;font-weight:900;font-size:12px}.galaxy-label i{font-style:normal;color:var(--tag-color,#55dfff);font:900 11px Orbitron,sans-serif}.dna-compare-bars{display:grid;gap:7px;margin-top:10px}.dna-compare-line{display:grid;grid-template-columns:72px minmax(0,1fr) 48px;align-items:center;gap:8px;color:#7fa4a7;font-size:9px;font-weight:800;text-transform:uppercase}.dna-compare-track{height:7px;border-radius:999px;background:rgba(120,220,220,.08);overflow:hidden}.dna-compare-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#4cffc0,#4dbdff);box-shadow:0 0 10px rgba(71,230,255,.22)}.dna-compare-line.global .dna-compare-fill{background:linear-gradient(90deg,#776f98,#9c76d7);box-shadow:none}.dna-compare-line b{text-align:right;color:#dfffff;font:900 9px Orbitron,sans-serif}.dna-delta{margin-top:9px;color:#7dffa9;font:900 10px Orbitron,sans-serif}.dna-delta.negative{color:#ff7f9d}
+
+@media(max-width:1120px){.warrior-dna-grid{grid-template-columns:1fr}.warrior-dna-panel.galaxy{grid-column:auto}.dna-category-grid{grid-template-columns:1fr 1fr}.warrior-dna-summary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.section-warrior-dna{padding:20px!important}.dna-category-grid,.dna-category-grid.two,.dna-record-grid,.dna-galaxy-grid{grid-template-columns:1fr}.warrior-dna-summary{grid-template-columns:1fr 1fr}.warrior-dna-helix.dna-c{display:none}.warrior-dna-helix{opacity:.13}.dna-panel-head{flex-direction:column}.dna-panel-mark{display:none}}
+@media(max-width:480px){.warrior-dna-summary{grid-template-columns:1fr}.dna-tag-row{grid-template-columns:1fr}.dna-tag-value{text-align:left}}
+@media(prefers-reduced-motion:reduce){.section-warrior-dna::before,.section-warrior-dna::after,.warrior-dna-helix,.warrior-dna-particles i{animation:none!important}}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anomalie Czarnej Dziury — Encyklopedia SnapDraftu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/encyclopedia12-anomalies.css?v=1.1.0-dynamic-registry">
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="back-link" href="przewodnik.html#katalogi">← ENCYKLOPEDIA SNAPDRAFTU</a>
+    <span class="catalog-badge" id="anomalyCatalogBadge">KATALOG ANOMALII</span>
+  </div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="kicker">Rozszerzenie · Black Hole Anomalies</div>
+      <h1>Anomalie Czarnej Dziury</h1>
+      <p class="lead">Losowe pęknięcia zasad, które mogą zmieniać paczki, decki, kolejkę i inne systemy draftu. Ten katalog jest budowany bezpośrednio z aktualnego katalogu Anomalii używanego przez program.</p>
+      <div class="hero-facts" id="anomalyHeroFacts" aria-live="polite"></div>
+      <div class="hero-note" id="anomalyHeroNote"><strong>Aktualny katalog:</strong> ładowanie danych Anomalii…</div>
+    </div>
+    <div class="hero-art"><img src="assets/catalogs/black_hole_anomalies_logo.webp" alt="Jeff i wir Czarnej Dziury"></div>
+  </section>
+
+  <section class="controls" aria-label="Filtry katalogu Anomalii">
+    <label class="search-wrap"><input id="anomalySearch" type="search" placeholder="Szukaj Anomalii lub efektu…" autocomplete="off"></label>
+    <div class="filter-group" id="anomalyRarityFilters" aria-label="Rzadkość"></div>
+    <div class="filter-group" id="anomalyTimingFilters" aria-label="Moment aktywacji"></div>
+    <div class="result-count">Widoczne: <b id="anomalyVisibleCount">0</b></div>
+  </section>
+
+  <div id="anomalyCatalogSections" aria-live="polite"></div>
+
+  <section class="info-grid" aria-label="Zasady systemu">
+    <article class="info-box"><b>KATALOG LIVE</b><p>Lista kart nie jest już wpisana ręcznie w tę stronę. Encyklopedia pobiera aktualne Anomalie z tego samego źródła, z którego korzysta runtime draftu.</p></article>
+    <article class="info-box"><b>RZADKOŚĆ</b><p>System rozróżnia trzy klasy: <strong>Rzadką</strong>, <strong>Epicką</strong> i <strong>Legendarną</strong>. Rzadkość wpływa na wagę losowania.</p></article>
+    <article class="info-box"><b>DANE DLA GRACZA</b><p>Encyklopedia pokazuje nazwy, opis działania, rzadkość, timing i istotne warunki. Wewnętrzne identyfikatory techniczne nie są wyświetlane.</p></article>
+  </section>
+
+  <footer class="footer"><span>MSP SnapDraft · Encyklopedia Anomalii Czarnej Dziury</span><a href="przewodnik.html#katalogi">Wróć do katalogów Encyklopedii ↑</a></footer>
+</main>
+<script>window.__BHA_CATALOG_MODE__=true;</script>
+<script src="PROGRAM-DRAFT/black-hole-anomalies.js?v=2.2.1-encyclopedia-dynamic-10b"></script>
+<script src="assets/encyclopedia12-anomalies.js?v=1.1.0-dynamic-registry"></script>
+</body>
+</html>

@@ -513,6 +513,15 @@ const cardDatabase = [
   { name: "Elder Dragon of the Moon", cost: 9, power: 12, cardType: "Character", tags: ["series5","trigger-card","buff","cost","cost-reduction","stat-check","ramp","nightmare-skaar","animals","monsters","season-2026-11-knights-of-avalon"] },
   { name: "Knight's Vow", cost: 2, power: 0, cardType: "Skill", tags: ["series4","on-reveal","buff","cost","skills","banish","cost-reduction","give-power","season-2026-11-knights-of-avalon"] },
   { name: "Sir Percy Black Knight", cost: 6, power: 9, cardType: "Character", tags: ["series5","trigger-card","cost","cost-reduction","stat-check","ramp","season-2026-11-knights-of-avalon"] },
+  { name: "Doctor Doom Doomsday", cost: 6, power: 6, cardType: "Character", tags: ["series5","on-reveal","ongoing","effect-replication","stat-check","wongreveal","cabal","geniuses","magicians","villains","season-2026-12-doomsday-unleashed"] },
+  { name: "Gambit & Shang-Chi Doomsday", cost: 3, power: 3, cardType: "Character", tags: ["series5","on-reveal","cost","modes","cost-reduction","row-interaction","set-power","stat-check","pixie","xmen","season-2026-12-doomsday-unleashed"] },
+  { name: "Invisible Woman & Namor Doomsday", cost: 3, power: 4, cardType: "Character", tags: ["series5","ongoing","disruption","modes","row-interaction","ongoing-self-power","stat-check","lockdown","spectrum-ongoing","atlanteans","fantastic4","future-foundation","season-2026-12-doomsday-unleashed"] },
+  { name: "Doom Witch", cost: 4, power: 1, cardType: "Character", tags: ["series4","ongoing","power-support","location-points","magicians","villains","season-2026-12-doomsday-unleashed"] },
+  { name: "Yelena Belova Doomsday", cost: 2, power: 2, cardType: "Character", tags: ["series5","endofturn","buff","give-power","play-requirement","small-buff-bounce","thunderbolts","season-2026-12-doomsday-unleashed"] },
+  { name: "Professor X Doomsday", cost: 3, power: 4, cardType: "Character", tags: ["series5","startofturn","buff","give-power","stat-check","surfer-buff","illuminati","xmen","geniuses","season-2026-12-doomsday-unleashed"] },
+  { name: "John Walker Doomsday", cost: 3, power: 4, cardType: "Character", tags: ["series4","ongoing","tech","thunderbolts","season-2026-12-doomsday-unleashed"] },
+  { name: "Mister Fantastic & Beast Doomsday", cost: 2, power: 3, cardType: "Character", tags: ["series5","on-reveal","ongoing","card-generation","modes","hand-gen","row-interaction","give-power","ongoing-self-power","victoria-hand-big-hand","fantastic4","future-foundation","xmen","geniuses","season-2026-12-doomsday-unleashed"] },
+  { name: "Cyclops Doomsday", cost: 2, power: 2, cardType: "Character", tags: ["series5","startofturn","afflict","card-generation","energy","skills","hand-gen","unique-card-creation","toxic-afflict","xmen","season-2026-12-doomsday-unleashed"] },
 ];
 
 const cards = cardDatabase.map(c => c.name);

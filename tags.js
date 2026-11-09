@@ -1396,6 +1396,12 @@ const TAGS = {
       name: "Knights of Avalon (2026-11)",
       description: "Sezon Marvel Snap 2026-11 — Knights of Avalon. Oznacza karty, które po raz pierwszy udostępniono w tym sezonie; bez późniejszych Series Dropów i bez tokenów generowanych przez inne karty."
     }
+  ,
+    {
+      id: "season-2026-12-doomsday-unleashed",
+      name: "Doomsday: Unleashed (2026-12)",
+      description: "Sezon Marvel Snap 2026-12 — Doomsday: Unleashed. Oznacza karty, które po raz pierwszy udostępniono w tym sezonie; bez późniejszych Series Dropów i bez tokenów generowanych przez inne karty."
+    }
   ],
 
   special: [
